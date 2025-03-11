@@ -73,8 +73,8 @@ export const TracingBeam = ({
       <div className="absolute -left-4 md:-left-20 top-3">
         <motion.div
           transition={{
-            duration: 0.1, // Reduced from 0.2
-            delay: 0.2, // Reduced from 0.5
+            duration: 0.1,
+            delay: 0.2,
           }}
           animate={{
             boxShadow:
@@ -82,12 +82,12 @@ export const TracingBeam = ({
                 ? "none"
                 : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
-          className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center"
+          className="hidden lg:flex ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm items-center justify-center"
         >
           <motion.div
             transition={{
-              duration: 0.1, // Reduced from 0.2
-              delay: 0.1, // Reduced from 0.2
+              duration: 0.1,
+              delay: 0.1,
             }}
             animate={{
               backgroundColor:
@@ -95,14 +95,14 @@ export const TracingBeam = ({
               borderColor:
                 scrollYProgress.get() > 0 ? "white" : "var(--emerald-600)",
             }}
-            className="h-2 w-2  rounded-full border border-neutral-300 bg-white"
+            className="h-2 w-2 rounded-full border border-neutral-300 bg-white"
           />
         </motion.div>
         <svg
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
           height={svgHeight}
-          className="ml-4 block"
+          className="ml-4 hidden md:block"
           aria-hidden="true"
           style={{ minHeight: '100%' }}
         >
@@ -112,7 +112,7 @@ export const TracingBeam = ({
             stroke="#9091A0"
             strokeOpacity="0.16"
             transition={{
-              duration: 5, // Reduced from 10
+              duration: 5,
             }}
           ></motion.path>
           <motion.path
@@ -122,7 +122,7 @@ export const TracingBeam = ({
             strokeWidth="1.25"
             className="motion-reduce:hidden"
             transition={{
-              duration: 5, // Reduced from 10
+              duration: 5,
             }}
           ></motion.path>
           <defs>
@@ -131,8 +131,8 @@ export const TracingBeam = ({
               gradientUnits="userSpaceOnUse"
               x1="0"
               x2="0"
-              y1={y1} // set y1 for gradient
-              y2={y2} // set y2 for gradient
+              y1={y1}
+              y2={y2}
             >
               <stop stopColor="#18CCFC" stopOpacity="0"></stop>
               <stop stopColor="#18CCFC"></stop>
@@ -142,7 +142,7 @@ export const TracingBeam = ({
           </defs>
         </svg>
       </div>
-      <div ref={contentRef}>{children}</div>
+      <div ref={contentRef} className="md:pl-16">{children}</div>
     </motion.div>
   );
 };

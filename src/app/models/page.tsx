@@ -1,9 +1,80 @@
 "use client";
 
 import { motion } from "motion/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+const modelData = [
+  {
+    id: 1,
+    name: "o1 Preview",
+    provider: "OpenAI",
+    category: "OpenAI",
+    description: "O1 Preview represents a significant advancement in AI technology, focusing on complex reasoning and problem-solving tasks. It employs techni...",
+    capabilities: "Complex problem-solving in STEM disciplines",
+    image: "https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+  },
+  // Add more model data here
+];
 
 export default function Models() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredModels, setFilteredModels] = useState(modelData);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      const filtered = modelData.filter(model =>
+        model.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        model.provider.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        model.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        model.capabilities.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredModels(filtered);
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
+
+  const renderModelCard = (model: {
+    id: number;
+    name: string;
+    provider: string;
+    category: string;
+    description: string;
+    capabilities: string;
+    image: string;
+  }) => (
+    <div
+      key={model.id}
+      className="w-auto rounded-3xl"
+      style={{ opacity: 1, transform: "none" }}
+    >
+      <div className="bg-[#181818] flex flex-col h-full justify-between rounded-xl p-6 max-w-md w-80 shadow-xl transition-all duration-300 ease-in-out transform hover:shadow-2xl">
+        <div>
+          <div className="items-center mb-6 grid grid-cols-12">
+            <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
+              <img
+                src={model.image}
+                alt={model.provider.toLowerCase()}
+                className="w-12 h-12 rounded-full"
+              />
+            </div>
+            <div className="col-span-10 ps-5">
+              <h2 className="text-2xl font-semibold bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent truncate">
+                {model.name}
+              </h2>
+              <p className="text-sm text-white">by {model.provider}</p>
+            </div>
+          </div>
+          <h3 className="text-[#00D188] font-semibold text-xl mb-4 text-faro truncate">
+            {model.capabilities}
+          </h3>
+          <p className="font-urbanist text-gray-300 min-h-32 mb-6 leading-relaxed">
+            {model.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
       <section className="w-full">
@@ -34,6 +105,8 @@ export default function Models() {
                     <input
                       type="text"
                       placeholder="Type to search..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
                       className="w-full h-12 pl-12 pr-4 text-base text-white bg-[#1C1C1C] rounded-xl border border-[#333333] focus:outline-none focus:border-[#444444] placeholder:text-gray-500"
                     />
                     <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
@@ -58,20 +131,28 @@ export default function Models() {
             </div>
             {/* End Search */}
 
-            {/* Start OpenAI */}
-            <div className="flex justify-start lg:max-w-[80%] max-w-full px-[1em] lg:px-0 mx-auto">
-              <h2 className="fade-up pt-[1.5em] pb-[0.8em] blog-h2 leading-[1.25em] capitalize bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl">
-                OpenAI
-              </h2>
-            </div>
-            <div>
-              <div className="relative w-full">
-                <div
-                  id="openai-scroll-container"
-                  className="scroll-container flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] hide-scrollbar"
-                >
-                  <div className="absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l" />
-                  <div className="flex flex-row justify-start gap-6 lg:px-[10%] px-[1em]">
+            {/* Model Categories */}
+            {filteredModels.length > 0 ? (
+              Object.entries(
+                filteredModels.reduce((acc, model) => {
+                  if (!acc[model.category]) {
+                    acc[model.category] = [];
+                  }
+                  acc[model.category].push(model);
+                  return acc;
+                }, {})
+              ).map(([category, models]) => (
+                <div key={category}>
+                  <div className="flex justify-start lg:max-w-[80%] max-w-full px-[1em] lg:px-0 mx-auto">
+                    <h2 className="fade-up pt-[1.5em] pb-[0.8em] blog-h2 leading-[1.25em] capitalize bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl">
+                      {category}
+                    </h2>
+                  </div>
+                  <div className="relative w-full">
+                    <div className="scroll-container flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] hide-scrollbar">
+                      <div className="absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l" />
+                      <div className="flex flex-row justify-start gap-6 lg:px-[10%] px-[1em]">
+                        {models.map(renderModelCard)}
                     <div
                       className=" w-auto rounded-3xl"
                       style={{ opacity: 1, transform: "none" }}
@@ -1020,67 +1101,16 @@ export default function Models() {
                         </div>
                       </div>
                     </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex justify-end gap-2 mr-[10%] pt-10">
-                  <button
-                    onClick={() => {
-                      const container = document.querySelector(
-                        "#openai-scroll-container"
-                      );
-                      if (container && container instanceof HTMLElement)
-                        container.scrollLeft -= container.offsetWidth;
-                    }}
-                    className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="tabler-icon tabler-icon-arrow-narrow-left h-6 w-6 text-gray-500"
-                    >
-                      <path d="M5 12l14 0" />
-                      <path d="M5 12l4 4" />
-                      <path d="M5 12l4 -4" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => {
-                      const container = document.querySelector(
-                        "#openai-scroll-container"
-                      );
-                      if (container && container instanceof HTMLElement)
-                        container.scrollLeft += container.offsetWidth;
-                    }}
-                    className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="tabler-icon tabler-icon-arrow-narrow-right h-6 w-6 text-gray-500"
-                    >
-                      <path d="M5 12l14 0" />
-                      <path d="M15 16l4 -4" />
-                      <path d="M15 8l4 4" />
-                    </svg>
-                  </button>
-                </div>
+              ))
+            ) : (
+              <div className="text-center py-10">
+                <p className="text-gray-400 text-lg">No models found matching your search criteria</p>
               </div>
-            </div>
-            {/* End OpenAI */}
+            )}
 
             {/* Start Anthropic */}
             <div className="flex justify-start lg:max-w-[80%] max-w-full px-[1em] lg:px-0 mx-auto">
