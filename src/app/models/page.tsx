@@ -140,7 +140,7 @@ export default function Models() {
                   }
                   acc[model.category].push(model);
                   return acc;
-                }, {})
+                }, {} as Record<string, typeof modelData[number][]>)
               ).map(([category, models]) => (
                 <div key={category}>
                   <div className="flex justify-start lg:max-w-[80%] max-w-full px-[1em] lg:px-0 mx-auto">

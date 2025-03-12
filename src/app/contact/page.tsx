@@ -1,9 +1,9 @@
 "use client";
 
 import React, { FormEvent, useState } from "react";
+import Link from "next/link";
 
 export default function ContactUs() {
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -12,6 +12,19 @@ export default function ContactUs() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        // Form validation
+        if (!firstName || !lastName || !email || !message) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
 
         let form = {
             firstName,
@@ -36,14 +49,17 @@ export default function ContactUs() {
             }
             
             const content = await rawResponse.json();
-            alert('Form submitted successfully!');
-
-            // Reset the form fields
-            setMessage('');
-            setFirstName('');
-            setLastName('');
-            setCompanyName('');
-            setEmail('');
+            if (content && content.data) {
+                alert('Form submitted successfully!');
+                // Reset the form fields
+                setMessage('');
+                setFirstName('');
+                setLastName('');
+                setCompanyName('');
+                setEmail('');
+            } else {
+                throw new Error('Invalid response from server');
+            }
         } catch (error) {
             alert('Error submitting form. Please try again.');
             console.error(error);
@@ -51,33 +67,73 @@ export default function ContactUs() {
     }
 
     return (
-        <div className="min-h-screen mx-auto bg-black w-full overflow-x-hidden">
-            <div className="max-w-5xl mx-auto py-16">
-                <form className="py-4 space-y-4" onSubmit={handleSubmit}>
-                    <div className="flex items-center justify-center">
-                        <label htmlFor="name" className="sr-only">Name</label>
-                        <input value={firstName} onChange={e => setFirstName(e.target.value)} type="text" name="firstname" id="name" className="shadow-md focus:ring-indigo-500 text-white focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md" placeholder="Your First Name" />
+        <div className="min-h-screen bg-[#111] p-6 flex items-center justify-center">
+            <div className="w-full max-w-7xl bg-[#1a1a1a] rounded-2xl overflow-hidden">
+                <div className="flex flex-col md:flex-row">
+                    {/* Left side - Image */}
+                    <div className="md:w-1/2 relative h-[300px] md:h-auto">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20" />
+                        <img
+                            src="/images/slate-ai-contact.png"
+                            alt="Contact Us"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
-                    <div className="flex items-center justify-center">
-                        <label htmlFor="name" className="sr-only">Name</label>
-                        <input value={lastName} onChange={e => setLastName(e.target.value)} type="text" name="lastname" id="name" className="shadow-md focus:ring-indigo-500 text-white focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md" placeholder="Your Last Name" />
+
+                    {/* Right side - Form */}
+                    <div className="md:w-1/2 p-8 md:p-12">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                            Get in Touch
+                        </h2>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input
+                                    value={firstName}
+                                    onChange={e => setFirstName(e.target.value)}
+                                    type="text"
+                                    placeholder="First Name"
+                                    className="w-full bg-[#222] border-none rounded-lg p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-all"
+                                />
+                                <input
+                                    value={lastName}
+                                    onChange={e => setLastName(e.target.value)}
+                                    type="text"
+                                    placeholder="Last Name"
+                                    className="w-full bg-[#222] border-none rounded-lg p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-all"
+                                />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input
+                                    value={companyName}
+                                    onChange={e => setCompanyName(e.target.value)}
+                                    type="text"
+                                    placeholder="Company Name"
+                                    className="w-full bg-[#222] border-none rounded-lg p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-all"
+                                />
+                                <input
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    type="email"
+                                    placeholder="Email"
+                                    className="w-full bg-[#222] border-none rounded-lg p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-all"
+                                />
+                            </div>
+                            <textarea
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                                placeholder="Message"
+                                rows={6}
+                                className="w-full bg-[#222] border-none rounded-lg p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-all resize-none"
+                            />
+                            <button
+                                type="submit"
+                                className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full text-white font-medium hover:opacity-90 transition-all duration-300 hover:scale-105"
+                            >
+                                Let's Connect
+                            </button>
+                        </form>
                     </div>
-                    <div className="flex items-center justify-center">
-                        <label htmlFor="name" className="sr-only">Name</label>
-                        <input value={companyName} onChange={e => setCompanyName(e.target.value)} type="text" name="companyname" id="name" className="shadow-md focus:ring-indigo-500 text-white focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md" placeholder="Your Company Name" />
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <label htmlFor="email" className="sr-only">Email</label>
-                        <input value={email} onChange={e => setEmail(e.target.value)} type="email" name="email" id="email" className="shadow-md focus:ring-indigo-500 text-white focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md" placeholder="Your Email" />
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <label htmlFor="message" className="sr-only">Message</label>
-                        <textarea value={message} onChange={e => setMessage(e.target.value)} id="message" className="shadow-md focus:ring-indigo-500 text-white focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md" placeholder="Your Message" />
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <button type="submit" className="flex items-center justify-center text-sm w-64 rounded-md shadow py-3 px-2 text-white bg-indigo-600">Save</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     );

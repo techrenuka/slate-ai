@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 export default function AiDeliver() {
   return (
     <div className="w-full bg-black">
-      <section className="py-10 md:py-16 flex flex-col md:flex-row justify-center items-center mx-auto max-w-7xl relative px-4 md:px-6">
+      <section className="py-10 md:py-16 flex flex-col md:flex-row justify-center items-center mx-auto max-w-7xl relative px-4 md:px-6 gap-8">
         <motion.div
-          className="lg:sticky top-10 h-fit mb-10 md:mb-20 max-w-md mx-auto md:mx-0 px-4 md:px-0"
+          className="lg:sticky top-10 h-fit mb-10 md:mb-0 max-w-lg mx-auto md:mx-0 px-4 md:px-0"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -30,7 +30,7 @@ export default function AiDeliver() {
             </button>
           </div>
         </motion.div>
-        <TracingBeam className="px-4 md:px-6 w-full md:w-auto">
+        <TracingBeam className="px-4 md:px-6 w-full md:w-[60%]">
           <div className="mx-auto antialiased pt-4 md:pt-6 relative max-w-2xl">
             {dummyContent.map((item, index) => (
               <div key={`content-${index}`} className="mb-8 md:mb-10">
