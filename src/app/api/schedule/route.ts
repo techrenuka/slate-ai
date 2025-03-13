@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-type ScheduleData = {
+export type ScheduleData = {
     name: string;
     email: string;
     date: string;
