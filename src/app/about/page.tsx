@@ -66,7 +66,7 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.75 }}
               className="gap-[6em] grid grid-cols-1"
             >
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
+              <div className="flex flex-col bg-[#181818] h-[35em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Transforming Ideas to Realities since 2003"
@@ -104,7 +104,7 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.75 }}
               className="gap-[6em] grid grid-cols-1"
             >
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
+              <div className="flex flex-col bg-[#181818] h-[35em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Where It All Began"
@@ -142,7 +142,7 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.75 }}
               className="gap-[6em] grid grid-cols-1"
             >
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
+              <div className="flex flex-col bg-[#181818] h-[35em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Romance with AI"
@@ -181,7 +181,7 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.75 }}
               className="gap-[6em] grid grid-cols-1"
             >
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
+              <div className="flex flex-col bg-[#181818] h-[35em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="The AI Leap"
@@ -219,7 +219,7 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.75 }}
               className="gap-[6em] grid grid-cols-1"
             >
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
+              <div className="flex flex-col bg-[#181818] h-[35em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Who We Are Today"

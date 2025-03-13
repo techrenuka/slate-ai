@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-type EmailData = {
+type PoCData = {
     firstName: string;
     lastName: string;
     companyName: string;
     email: string;
+    industry: string;
     message: string;
 };
 
@@ -45,11 +46,11 @@ export async function POST(request: Request) {
         }
 
         // Parse and validate request body
-        const body: EmailData = await request.json();
-        const { firstName, lastName, companyName, email, message } = body;
+        const body: PoCData = await request.json();
+        const { firstName, lastName, companyName, email, industry, message } = body;
 
         // Validate required fields
-        if (!firstName || !lastName || !email || !message) {
+        if (!firstName || !lastName || !email || !industry || !message) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
@@ -71,6 +72,7 @@ export async function POST(request: Request) {
             lastName,
             companyName,
             email,
+            industry,
             message
         });
 
@@ -83,11 +85,11 @@ export async function POST(request: Request) {
 
         return NextResponse.json({
             success: true,
-            message: 'Email sent successfully'
+            message: 'PoC request submitted successfully'
         });
         
     } catch (error) {
-        console.error('Form submission error:', error);
+        console.error('PoC request submission error:', error);
         return NextResponse.json(
             { error: 'Internal server error' },
             { status: 500 }
@@ -95,8 +97,8 @@ export async function POST(request: Request) {
     }
 }
 
-async function sendEmail(data: EmailData) {
-    const { firstName, lastName, companyName, email, message } = data;
+async function sendEmail(data: PoCData) {
+    const { firstName, lastName, companyName, email, industry, message } = data;
 
     try {
         const transporter = nodemailer.createTransport({
@@ -111,12 +113,13 @@ async function sendEmail(data: EmailData) {
         const adminMailOptions = {
             from: process.env.GOOGLE_EMAIL,
             to: process.env.NOTIFY_EMAIL,
-            subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+            subject: `New PoC Request from ${firstName} ${lastName}`,
             html: `
-                <h2>New Contact Form Submission</h2>
+                <h2>New PoC Request Submission</h2>
                 <p><strong>Name:</strong> ${firstName} ${lastName}</p>
                 <p><strong>Company:</strong> ${companyName || 'N/A'}</p>
                 <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Industry:</strong> ${industry}</p>
                 <p><strong>Message:</strong></p>
                 <p>${message}</p>
             `
@@ -126,17 +129,18 @@ async function sendEmail(data: EmailData) {
         const userMailOptions = {
             from: process.env.GOOGLE_EMAIL,
             to: email,
-            subject: `Thank You for Contacting Slate AI Solutions`,
+            subject: `Thank You for Requesting a PoC from Slate AI Solutions`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #2563eb;">Thank You for Reaching Out!</h2>
+                    <h2 style="color: #2563eb;">Thank You for Your Interest!</h2>
                     <p>Dear ${firstName},</p>
-                    <p>Thank you for contacting Slate AI Solutions. We have received your message and appreciate your interest in our services.</p>
-                    <p>Our team will carefully review your inquiry and get back to you within 1-2 business days.</p>
+                    <p>Thank you for requesting a Proof of Concept (PoC) from Slate AI Solutions. We're excited about the opportunity to demonstrate how our AI solutions can benefit your organization.</p>
+                    <p>Our team will carefully review your requirements and get back to you within 2 business days to discuss the next steps.</p>
                     <p>Here's a summary of what you shared with us:</p>
                     <ul>
                         <li><strong>Name:</strong> ${firstName} ${lastName}</li>
                         ${companyName ? `<li><strong>Company:</strong> ${companyName}</li>` : ''}
+                        <li><strong>Industry:</strong> ${industry}</li>
                     </ul>
                     <p>If you have any immediate questions or need to provide additional information, please don't hesitate to reply to this email.</p>
                     <p>Best regards,<br>The Slate AI Solutions Team</p>

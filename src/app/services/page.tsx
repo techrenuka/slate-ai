@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Services() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-black">
-            <section>
+            <section className="w-full mx-auto">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -16,24 +16,24 @@ export default function Services() {
                     }}
                 >
                     <motion.div 
-                        className="mx-auto flex flex-col items-center justify-center max-w-full lg:px-0 flex-grow py-20 lg:py-[10em] mb-[5em]"
+                        className="mx-auto flex flex-col items-center justify-center w-full py-20 sm:py-16 lg:py-[10em] space-y-4 sm:space-y-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="flex justify-center">
-                            <h1 className="bg-gradient-to-l from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-6xl inline-flex font-bold text-center leading-tight">
+                            <h1 className="bg-gradient-to-l from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-4xl sm:text-5xl lg:text-6xl font-bold text-center leading-tight px-4">
                                 Our AI Services
                             </h1>
                         </div>
-                        <p className="text-2xl text-center font-[500] site-h3 pt-1 w-full text-[#808080]">
+                        <p className="text-lg sm:text-xl lg:text-2xl text-center font-[500] site-h3 text-[#808080] max-w-3xl">
                             that keep you a Step Ahead in AI Race
                         </p>
                     </motion.div>
                 </motion.div>
 
                 {/* AI PoC Development */}
-                <div className="lg:pb-[10em] pb-[5em]">
+                <div className="lg:py-[10em] py-[5em]">
                     <motion.div
                         className="relative lg:h-[45em]"
                         initial={{ opacity: 0, y: 40 }}
@@ -41,7 +41,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -56,17 +56,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         AI PoC Development
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Transform your business challenges into innovative solutions with
                                         our AI Proof of Concept development service, guiding you from idea
                                         to implementation with precision and clarity. Unlock the power of
@@ -333,7 +333,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -348,17 +348,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         AI Strategy and Consulting
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Navigate your AI journey with confidence through our comprehensive
                                         consulting services. We help organizations chart their course in
                                         the AI landscape, ensuring strategic alignment with business
@@ -624,7 +624,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -639,17 +639,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         RAG Development
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Build powerful RAG systems that combine the precision of
                                         information retrieval with the flexibility of generative AI.
                                         Create context-aware solutions that deliver accurate, relevant
@@ -916,7 +916,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -931,17 +931,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         Custom AI Solution Development
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Transform your unique business challenges into powerful AI-driven
                                         solutions. Our custom development service creates tailored AI
                                         applications that perfectly align with your specific needs and
@@ -1208,7 +1208,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -1223,17 +1223,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         AI/ML Ops Management
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Maximize AI system reliability and performance through
                                         comprehensive MLOps practices and advanced observability. We
                                         ensure your AI systems operate efficiently, reliably, and
@@ -1499,7 +1499,7 @@ export default function Services() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
+                        <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 lg:flex-row">
                             <motion.div 
                                 className="lg:w-6/12 w-full lg:absolute end-0 h-full"
                                 initial={{ opacity: 0, x: 100 }}
@@ -1514,17 +1514,17 @@ export default function Services() {
                                 />
                             </motion.div>
                             <motion.div 
-                                className="lg:w-6/12 w-full h-full flex items-center"
+                                className="w-full lg:w-1/2 order-2 lg:order-1 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
                                 <div className="lg:pt-0 pt-6">
-                                    <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
+                                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight">
                                         AI Learning &amp; Development
                                     </h2>
-                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  lg:w-10/12 w-full font-urbanist">
+                                    <p className="text-fade font-[400] text-[1.5em]  text-[#aaa]  pb-6 pt-3  w-full font-urbanist">
                                         Empower your team with comprehensive AI knowledge and practical
                                         skills. Our training programs combine theoretical understanding
                                         with hands-on experience to build true AI capability within your

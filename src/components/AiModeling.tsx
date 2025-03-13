@@ -105,7 +105,7 @@ export default function AiModeling() {
           
           <div className="relative">
             <div style={{ 
-                 transform: `translate3d(0px, ${-120 - scrollY * -0.07}px, 0px)`,
+              transform: `translate3d(0px, ${-120 - scrollY * -0.07}px, 0px)`,
               translate: `none`,
               rotate: `none`,
               scale:`none`
@@ -209,7 +209,7 @@ export default function AiModeling() {
                 translate: 'none',
                 rotate: 'none',
                 scale: 'none',
-                transform: `translate3d(0px, -100px, 0px)`
+                transform: `translate3d(0px, ${-100 - scrollY * -0.07}px, 0px)`,
               }}
             >
               <img

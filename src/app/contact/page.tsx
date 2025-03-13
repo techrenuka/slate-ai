@@ -44,13 +44,14 @@ export default function ContactUs() {
                 body: JSON.stringify(form)
             });
             
+            const content = await rawResponse.json();
+            
             if (!rawResponse.ok) {
-                throw new Error('Failed to submit form');
+                throw new Error(content.error || 'Failed to submit form');
             }
             
-            const content = await rawResponse.json();
-            if (content && content.data) {
-                alert('Form submitted successfully!');
+            if (content && content.success) {
+                alert('Thank you for your message! We will get back to you soon.');
                 // Reset the form fields
                 setMessage('');
                 setFirstName('');
@@ -58,20 +59,20 @@ export default function ContactUs() {
                 setCompanyName('');
                 setEmail('');
             } else {
-                throw new Error('Invalid response from server');
+                throw new Error('Failed to send email');
             }
         } catch (error) {
             alert('Error submitting form. Please try again.');
-            console.error(error);
+            console.error('Form submission error:', error);
         }
     }
 
     return (
-        <div className="min-h-screen bg-[#111] p-6 flex items-center justify-center">
-            <div className="w-full max-w-7xl bg-[#1a1a1a] rounded-2xl overflow-hidden">
-                <div className="flex flex-col md:flex-row">
+        <div className="min-h-screen bg-[#111] py-24 px-6 flex items-center justify-center">
+            <div className="w-full lg:max-w-7xl bg-[#1a1a1a] rounded-2xl overflow-hidden">
+                <div className="flex flex-col lg:flex-row">
                     {/* Left side - Image */}
-                    <div className="md:w-1/2 relative h-[300px] md:h-auto">
+                    <div className="lg:w-1/2 relative h-[300px] md:h-auto">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20" />
                         <img
                             src="/images/slate-ai-contact.png"
@@ -81,7 +82,7 @@ export default function ContactUs() {
                     </div>
 
                     {/* Right side - Form */}
-                    <div className="md:w-1/2 p-8 md:p-12">
+                    <div className="lg:w-1/2 p-8 md:p-12">
                         <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                             Get in Touch
                         </h2>

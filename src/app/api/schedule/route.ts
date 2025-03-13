@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-type EmailData = {
-    firstName: string;
-    lastName: string;
-    companyName: string;
+type ScheduleData = {
+    name: string;
     email: string;
+    date: string;
+    time: string;
+    timezone: string;
     message: string;
 };
 
@@ -45,11 +46,11 @@ export async function POST(request: Request) {
         }
 
         // Parse and validate request body
-        const body: EmailData = await request.json();
-        const { firstName, lastName, companyName, email, message } = body;
+        const body: ScheduleData = await request.json();
+        const { name, email, date, time, timezone, message } = body;
 
         // Validate required fields
-        if (!firstName || !lastName || !email || !message) {
+        if (!name || !email || !date || !time) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
@@ -67,11 +68,12 @@ export async function POST(request: Request) {
 
         // Send email
         const emailResult = await sendEmail({
-            firstName,
-            lastName,
-            companyName,
+            name,
             email,
-            message
+            date,
+            time,
+            timezone,
+            message: message || ''
         });
 
         if (!emailResult.success) {
@@ -83,11 +85,11 @@ export async function POST(request: Request) {
 
         return NextResponse.json({
             success: true,
-            message: 'Email sent successfully'
+            message: 'Schedule request sent successfully'
         });
         
     } catch (error) {
-        console.error('Form submission error:', error);
+        console.error('Schedule submission error:', error);
         return NextResponse.json(
             { error: 'Internal server error' },
             { status: 500 }
@@ -95,8 +97,8 @@ export async function POST(request: Request) {
     }
 }
 
-async function sendEmail(data: EmailData) {
-    const { firstName, lastName, companyName, email, message } = data;
+async function sendEmail(data: ScheduleData) {
+    const { name, email, date, time, timezone, message } = data;
 
     try {
         const transporter = nodemailer.createTransport({
@@ -107,18 +109,27 @@ async function sendEmail(data: EmailData) {
             }
         });
 
+        // Format date and time for display
+        const formattedDate = new Date(date).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
         // Admin notification email
         const adminMailOptions = {
             from: process.env.GOOGLE_EMAIL,
             to: process.env.NOTIFY_EMAIL,
-            subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+            subject: `New Call Schedule Request from ${name}`,
             html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-                <p><strong>Company:</strong> ${companyName || 'N/A'}</p>
+                <h2>New Call Schedule Request</h2>
+                <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message}</p>
+                <p><strong>Requested Date:</strong> ${formattedDate}</p>
+                <p><strong>Requested Time:</strong> ${time}</p>
+                <p><strong>Timezone:</strong> ${timezone}</p>
+                ${message ? `<p><strong>Additional Notes:</strong></p><p>${message}</p>` : ''}
             `
         };
 
@@ -126,19 +137,20 @@ async function sendEmail(data: EmailData) {
         const userMailOptions = {
             from: process.env.GOOGLE_EMAIL,
             to: email,
-            subject: `Thank You for Contacting Slate AI Solutions`,
+            subject: `Your Call with Slate AI Solutions is Scheduled`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #2563eb;">Thank You for Reaching Out!</h2>
-                    <p>Dear ${firstName},</p>
-                    <p>Thank you for contacting Slate AI Solutions. We have received your message and appreciate your interest in our services.</p>
-                    <p>Our team will carefully review your inquiry and get back to you within 1-2 business days.</p>
-                    <p>Here's a summary of what you shared with us:</p>
+                    <h2 style="color: #2563eb;">Your Call is Scheduled!</h2>
+                    <p>Dear ${name},</p>
+                    <p>Thank you for scheduling a call with Slate AI Solutions. We're looking forward to speaking with you!</p>
+                    <p>Here are your call details:</p>
                     <ul>
-                        <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-                        ${companyName ? `<li><strong>Company:</strong> ${companyName}</li>` : ''}
+                        <li><strong>Date:</strong> ${formattedDate}</li>
+                        <li><strong>Time:</strong> ${time}</li>
+                        <li><strong>Timezone:</strong> ${timezone}</li>
                     </ul>
-                    <p>If you have any immediate questions or need to provide additional information, please don't hesitate to reply to this email.</p>
+                    <p>Our team will send you a calendar invitation with the conference details shortly.</p>
+                    <p>If you need to reschedule or have any questions before the call, please don't hesitate to reply to this email.</p>
                     <p>Best regards,<br>The Slate AI Solutions Team</p>
                 </div>
             `
