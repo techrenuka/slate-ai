@@ -13,7 +13,7 @@ export default function AiSolutions() {
               <motion.div
                 initial={{ opacity: 0, x: -180 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.75 }}
                 transition={{ duration: 0.8 }}
                 className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
               >
@@ -45,7 +45,7 @@ export default function AiSolutions() {
               <motion.div
                 initial={{ opacity: 0, x: 180 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.75 }}
                 transition={{ duration: 0.8 }}
                 className="hidden lg:flex w-full lg:w-1/2 justify-center px-4 sm:px-6 lg:px-0"
               >

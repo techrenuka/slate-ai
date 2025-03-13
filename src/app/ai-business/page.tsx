@@ -1,49 +1,66 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import React from "react";
 
 export default function AIInBusiness() {
     return (
         <div className="min-h-screen mx-auto bg-black w-full overflow-x-hidden">
             <section>
-                <div
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
                     style={{
                         background:
                             "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"
                     }}
                 >
-                    <div className="mx-auto flex flex-col items-center justify-center max-w-full lg:px-10 flex-grow py-20  lg:py-[10em] mb-[5em] ">
+                    <motion.div 
+                        className="mx-auto flex flex-col items-center justify-center max-w-full lg:px-10 flex-grow py-20 lg:py-[10em] mb-[5em]"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
                         <h1 className="bg-gradient-to-l from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-6xl inline-flex font-bold text-center leading-tight">
                             Transforming Industries with AI/ML Excellence
                         </h1>
                         <p className="text-lg md:text-xl lg:text-2xl text-center font-[500] site-h3 pt-1 w-full text-[#808080]">
                             Real Success Stories: Transforming Industries with AI
                         </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Finance & Accounting */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
-                        style={{
-                            translate: "none",
-                            rotate: "none",
-                            scale: "none",
-                            transform: "translate3d(0px, 0px, 0px)",
-                            opacity: 1
-                        }}
+                    <motion.div
+                        className="relative lg:h-[45em]"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8 }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/business-finance.png"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl leading-[1.25em] inline">
                                         Finance &amp; Accounting
@@ -168,32 +185,41 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Strategic Management */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
+                    <motion.div 
                         className="relative lg:h-[45em] "
-                        style={{
-                            translate: "none",
-                            rotate: "none",
-                            scale: "none",
-                            transform: "translate3d(0px, 100px, 0px) scale(0.95, 0.95)",
-                            opacity: 1
-                        }}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0 lg:flex-row-reverse">
-                            <div className="lg:w-6/12 w-full  lg:absolute start-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full  lg:absolute start-0 h-full"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/8.webp"
                                     alt=""
                                     className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-10/12 w-11/12 capitalize text-faro bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em]">
                                         Strategic Management
@@ -318,9 +344,9 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* ⁠⁠Sales & Marketing */}
@@ -336,14 +362,26 @@ export default function AIInBusiness() {
                         }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/9.webp"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl leading-[1.25em] inline">
                                         {" "}
@@ -469,32 +507,41 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
 
                 {/* Research & Innovation */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
+                    <motion.div 
                         className="relative lg:h-[45em] "
-                        style={{
-                            translate: "none",
-                            rotate: "none",
-                            scale: "none",
-                            transform: "translate3d(0px, 100px, 0px) scale(0.95, 0.95)",
-                            opacity: 1
-                        }}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0 lg:flex-row-reverse">
-                            <div className="lg:w-6/12 w-full  lg:absolute start-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full  lg:absolute start-0 h-full"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/12.jpg"
                                     alt=""
                                     className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-10/12 w-11/12 capitalize text-faro bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em]">
                                         Research &amp; Innovation
@@ -619,9 +666,9 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Human Resources */}
@@ -637,14 +684,26 @@ export default function AIInBusiness() {
                         }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/7.jpg"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl leading-[1.25em] inline">
                                         Human Resources
@@ -769,32 +828,41 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
 
                 {/* Information Technology */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
+                    <motion.div 
                         className="relative lg:h-[45em] "
-                        style={{
-                            translate: "none",
-                            rotate: "none",
-                            scale: "none",
-                            transform: "translate3d(0px, 100px, 0px) scale(0.95, 0.95)",
-                            opacity: 1
-                        }}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0 lg:flex-row-reverse">
-                            <div className="lg:w-6/12 w-full  lg:absolute start-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full  lg:absolute start-0 h-full"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/6.jpg"
                                     alt=""
                                     className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center  lg:ps-20"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-10/12 w-11/12 capitalize text-faro bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em]">
                                         Information Technology
@@ -919,9 +987,9 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Customer Service */}
@@ -937,14 +1005,26 @@ export default function AIInBusiness() {
                         }}
                     >
                         <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] max-w-full px-4 lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div 
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full"
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                            >
                                 <img
                                     src="/images/10.webp"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div 
+                                className="lg:w-6/12 w-full h-full flex items-center"
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                            >
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl leading-[1.25em] inline">
                                         Customer Service
@@ -1069,7 +1149,7 @@ export default function AIInBusiness() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

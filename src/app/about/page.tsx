@@ -1,12 +1,18 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black px-6">
       <section className="px-[1em] lg:px-0  lg:py-[7.5em] pt-[3em] mx-auto">
         <div className="flex justify-center flex-col w-full lg:max-w-[70%] mx-auto">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.75 }}
+          >
             <div className="text-center">
               <h2 className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-6xl inline-flex font-bold lg:leading-[1.3em] leading-[1.2em]">
                 About Us
@@ -19,15 +25,27 @@ export default function AboutUs() {
               Today, we build the intelligent solutions that
               <br /> make enterprises smarter, faster, and ready for tomorrow.
             </p>
-          </div>
-          <div className="lg:py-[5em] py-[3em]">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.75 }}
+            className="lg:py-[5em] py-[3em]"
+          >
             <img
               src="/images/ai-solution.png"
               alt="other"
               className="w-full h-auto rounded-xl overflow-hidden shadow-lg "
             />
-          </div>
-          <div className="lg:pb-[5em] pb-[3em]">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.75 }}
+            className="lg:pb-[5em] pb-[3em]"
+          >
             <div className="text-center">
               <h2 className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-6xl inline-flex font-bold lg:leading-[1.3em] leading-[1.2em] pb-5">
                 Our AI Story
@@ -37,12 +55,18 @@ export default function AboutUs() {
               Let us walk you through how it all started and where are we right
               now!
             </p>
-          </div>
+          </motion.div>
 
           <div className="flex flex-col gap-16">
             {/* Card 1 */}
-            <div className="gap-[6em] grid grid-cols-1 ">
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row  items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.75 }}
+              className="gap-[6em] grid grid-cols-1"
+            >
+              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Transforming Ideas to Realities since 2003"
@@ -51,7 +75,7 @@ export default function AboutUs() {
                     height={300}
                     decoding="async"
                     data-nimg={1}
-                    className=" object-cover object-top h-full w-full"
+                    className="object-cover object-top h-full w-full"
                     srcSet="/images/ai-visualize.jpg"
                     src="/images/ai-visualize.jpg"
                     style={{ color: "transparent" }}
@@ -70,10 +94,16 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2 */}
-            <div className="gap-[6em] grid grid-cols-1">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.75 }}
+              className="gap-[6em] grid grid-cols-1"
+            >
               <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
                 <div className="md:w-2/5 h-full">
                   <img
@@ -83,7 +113,7 @@ export default function AboutUs() {
                     height={300}
                     decoding="async"
                     data-nimg={1}
-                    className=" object-cover object-top h-full w-full"
+                    className="object-cover object-top h-full w-full"
                     srcSet="/images/ai-new-begining.jpg"
                     src="/images/ai-new-begining.jpg"
                     style={{ color: "transparent" }}
@@ -102,11 +132,17 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3 */}
-            <div className="gap-[6em] grid grid-cols-1 ">
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row  items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.75 }}
+              className="gap-[6em] grid grid-cols-1"
+            >
+              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Romance with AI"
@@ -115,7 +151,7 @@ export default function AboutUs() {
                     height={300}
                     decoding="async"
                     data-nimg={1}
-                    className=" object-cover object-top h-full w-full"
+                    className="object-cover object-top h-full w-full"
                     srcSet="/images/romance-with-ai.jpg"
                     src="/images/romance-with-ai.jpg"
                     style={{ color: "transparent" }}
@@ -135,10 +171,16 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 4 */}
-            <div className="gap-[6em] grid grid-cols-1">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.75 }}
+              className="gap-[6em] grid grid-cols-1"
+            >
               <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row md:flex-row-reverse items-center">
                 <div className="md:w-2/5 h-full">
                   <img
@@ -148,7 +190,7 @@ export default function AboutUs() {
                     height={300}
                     decoding="async"
                     data-nimg={1}
-                    className=" object-cover h-full w-full"
+                    className="object-cover h-full w-full"
                     srcSet="/images/ai-leap.png"
                     src="/images/ai-leap.png"
                     style={{ color: "transparent" }}
@@ -167,11 +209,17 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 5 */}
-            <div className="gap-[6em] grid grid-cols-1 ">
-              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row  items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.75 }}
+              className="gap-[6em] grid grid-cols-1"
+            >
+              <div className="flex flex-col bg-[#181818] h-[20em] rounded-xl overflow-hidden md:flex-row items-center">
                 <div className="md:w-2/5 h-full">
                   <img
                     alt="Who We Are Today"
@@ -180,7 +228,7 @@ export default function AboutUs() {
                     height={300}
                     decoding="async"
                     data-nimg={1}
-                    className=" object-cover h-full w-full"
+                    className="object-cover h-full w-full"
                     srcSet="/images/who-ai-today.png"
                     src="/images/who-ai-today.png"
                     style={{ color: "transparent" }}
@@ -199,7 +247,7 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

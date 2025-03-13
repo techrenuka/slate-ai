@@ -1,10 +1,15 @@
 "use client";
+import { motion } from "framer-motion";
 
 export default function Industries() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-black">
             <section>
-                <div
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
                     style={{
                         background:
                             "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"
@@ -18,12 +23,16 @@ export default function Industries() {
                             Real Success Stories: Transforming Industries with AI
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Finanace */}
+                {/* Finance */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -33,14 +42,24 @@ export default function Industries() {
                         }}
                     >
                         <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full">
                                 <img
                                     src="/images/business-finance.png"
                                     alt="Business Fianance"
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                           </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8 }}
+                                className="lg:w-6/12 w-full h-full flex items-center">
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
                                         Finance
@@ -52,7 +71,12 @@ export default function Industries() {
                                         institutions to stay ahead of fraud, optimizing strategies and
                                         deliver personalized services that build trust and drive growth.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -138,7 +162,7 @@ export default function Industries() {
                                                 <p>Risk assessment models</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Finance">
@@ -153,15 +177,19 @@ export default function Industries() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Retail */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -191,7 +219,12 @@ export default function Industries() {
                                         business operations, ensuring a competitive edge in a dynamic
                                         market.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -277,7 +310,7 @@ export default function Industries() {
                                                 <p>Automated supply chain planning</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Retail">
@@ -294,13 +327,17 @@ export default function Industries() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Logistics */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -310,14 +347,24 @@ export default function Industries() {
                         }}
                     >
                         <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full">
                                 <img
                                     src="/images/delivery-robot.jpg"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8 }}
+                                className="lg:w-6/12 w-full h-full flex items-center">
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
                                         Logistics
@@ -329,7 +376,12 @@ export default function Industries() {
                                         efficient, reliable, and cost-effective logistics solutions,
                                         driving better outcomes for businesses and their customers.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -415,7 +467,7 @@ export default function Industries() {
                                                 <p>Demand forecasting</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Logistics">
@@ -430,15 +482,19 @@ export default function Industries() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Healthcare */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -468,7 +524,12 @@ export default function Industries() {
                                         faster, more accurate care, improving the quality of life and
                                         operational efficiency.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -571,7 +632,7 @@ export default function Industries() {
                                                 <p>Remote patient monitoring</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Healthcare">
@@ -588,13 +649,17 @@ export default function Industries() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Manufacturing */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -604,14 +669,24 @@ export default function Industries() {
                         }}
                     >
                         <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full">
                                 <img
                                     src="/images/ai-manufacturing.avif"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8 }}
+                                className="lg:w-6/12 w-full h-full flex items-center">
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
                                         Manufacturing
@@ -624,7 +699,12 @@ export default function Industries() {
                                         can operate more efficiently and produce better products with less
                                         waste.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -710,7 +790,7 @@ export default function Industries() {
                                                 <p>Demand forecasting</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Manufacturing">
@@ -725,15 +805,19 @@ export default function Industries() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Fitness */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none",
                             rotate: "none",
@@ -762,7 +846,12 @@ export default function Industries() {
                                         efficient, reliable, and cost-effective logistics solutions,
                                         driving better outcomes for businesses and their customers.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -848,7 +937,7 @@ export default function Industries() {
                                                 <p>Demand forecasting</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Fitness">
@@ -865,13 +954,17 @@ export default function Industries() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* E-commerce */}
                 <div className="lg:pb-[10em] pb-[5em]">
-                    <div
-                        className="relative lg:h-[45em] "
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.75 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative lg:h-[45em]"
                         style={{
                             translate: "none", 
                             rotate: "none",
@@ -881,14 +974,24 @@ export default function Industries() {
                         }}
                     >
                         <div className="w-full flex  h-full flex-wrap   mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0">
-                            <div className="lg:w-6/12 w-full  lg:absolute end-0 h-full">
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="lg:w-6/12 w-full lg:absolute end-0 h-full">
                                 <img
                                     src="/images/ai-ecommerce.jpg"
                                     alt=""
                                     className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl object-cover "
                                 />
-                            </div>
-                            <div className="lg:w-6/12 w-full h-full flex items-center  0">
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.75 }}
+                                transition={{ duration: 0.8 }}
+                                className="lg:w-6/12 w-full h-full flex items-center">
                                 <div className="lg:pt-0 pt-6">
                                     <h2 className="text-fade lg:w-9/12 w-11/12 capitalize font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-5xl leading-[1.25em] inline">
                                         E-commerce
@@ -901,7 +1004,12 @@ export default function Industries() {
                                         personalized shopping experiences, increase sales, and enhance
                                         operational efficiency.
                                     </p>
-                                    <div className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="text-fade font-[400] text-[1.5em] ps-6 leading-[1.5em] text-[#808080] pb-10 font-urbanist">
                                         <div className=" list-none flex items-center gap-6 text-fade font-[400] text-[1em] leading-[1.8em] text-[#808080]">
                                             <svg
                                                 stroke="currentColor"
@@ -1004,7 +1112,7 @@ export default function Industries() {
                                                 <p>Fraud detection and prevention</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                     <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/E-commerce">
@@ -1019,9 +1127,9 @@ export default function Industries() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </div>
