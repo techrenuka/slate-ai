@@ -61,70 +61,53 @@ export default function AiDeliver() {
   );
 }
 
-// Update the dummy content with more meaningful titles
 const dummyContent = [
   {
-    title: "Business Problems",
+    title: "Strategic AI Implementation",
     description: (
       <>
         <p>
-          We identify and prioritize the challenges that will have the greatest impact on your business, ensuring every AI initiative aligns with your financial goals and drives meaningful transformation.
+          Transform your business operations with enterprise-grade AI solutions that deliver measurable ROI. Our proven methodology ensures successful implementation with minimal disruption.
         </p>
       </>
     ),
     bulletPoints: [
-      "Identify high-ROI opportunities in market trends",
-      "Prioritize challenges for maximum business impact",
-      "Quantify potential value and implementation costs",
-      "Align AI investments with financial goals"
+      "Reduce operational costs by up to 45%",
+      "Increase productivity by 300%",
+      "Achieve ROI within 6 months",
+      "Enterprise-grade security compliance"
     ]
   },
   {
-    title: "Solution Engineering",
+    title: "Custom AI Solutions",
     description: (
       <>
         <p>
-          By designing scalable, cost-effective architectures, we turn visionary concepts into reality, balancing cutting-edge technology with proven solutions to maximize efficiency and ROI.
+          Leverage our expertise in developing tailored AI solutions that address your specific business challenges, from process automation to advanced analytics.
         </p>
       </>
     ),
     bulletPoints: [
-      "Design cost-effective, scalable system architectures",
-      "Optimize resource allocation for maximum efficiency",
-      "Balance cutting-edge tech with proven solutions",
-      "Implement phased approach for quicker ROI"
+      "Industry-specific AI models",
+      "Seamless integration with existing systems",
+      "Scalable architecture design",
+      "24/7 support and maintenance"
     ]
   },
   {
-    title: "Artificial Intelligence",
+    title: "AI Innovation Lab",
     description: (
       <>
         <p>
-          Our AI solutions are tailored for high-impact, low-complexity applications, delivering clear, measurable returns while continuously optimizing to maintain ongoing value.
+          Stay ahead of the competition with cutting-edge AI solutions developed in our innovation lab, designed specifically for enterprise needs.
         </p>
       </>
     ),
     bulletPoints: [
-      "Develop AI solutions with clear ROI potential",
-      "Prioritize high-impact, low-complexity AI applications",
-      "Leverage transfer learning to reduce costs",
-      "Continuously optimize AI for ongoing value"
+      "Latest AI/ML technologies",
+      "Rapid prototyping and testing",
+      "Continuous innovation pipeline",
+      "Industry-specific solutions"
     ]
-  },
-  {
-    title: "User Experience",
-    description: (
-      <>
-        <p>
-          We craft intuitive interfaces that not only enhance user productivity but also reduce training costs, ensuring advanced technology is effortlessly accessible and efficient.
-        </p>
-      </>
-    ),
-    bulletPoints: [
-      "Create interfaces that boost user productivity",
-      "Design for reduced training and support costs",
-      "Implement analytics for UX-driven cost savings",
-      "Balance feature richness with development efficiency"
-    ]
-  },
+  }
 ];
