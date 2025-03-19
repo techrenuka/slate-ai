@@ -9,13 +9,13 @@ export default function AiSolutions() {
         <div className="rounded-3xl">
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
-              {/* Card 1 - From Left */}
+              {/* Card 1 - From Left - Visible on all screens */}
               <motion.div
-                initial={{ opacity: 0, x: -180 }}
+                initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.75 }}
-                transition={{ duration: 0.8 }}
-                className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+                className="block w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
               >
                 <div className="space-y-6">
                   <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold text-center lg:text-left leading-tight">
@@ -41,25 +41,27 @@ export default function AiSolutions() {
                 </div>
               </motion.div>
 
-              {/* Card 2 - From Right */}
+              {/* Card 2 - From Right - Only visible on desktop */}
               <motion.div
-                initial={{ opacity: 0, x: 180 }}
+                initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.75 }}
-                transition={{ duration: 0.8 }}
-                className="hidden lg:flex w-full lg:w-1/2 justify-center px-4 sm:px-6 lg:px-0"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+                className="hidden lg:block w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
               >
-                <img
-                  alt="lock"
-                  loading="lazy"
-                  width={259}
-                  height={500}
-                  decoding="async"
-                  data-nimg={1}
-                  className="w-auto h-[18rem] sm:h-[22rem] md:h-[25rem] lg:h-[30rem] object-contain transition-all duration-300"
-                  src="/images/lock.png"
-                  style={{ color: "transparent" }}
-                />
+                <div className="flex justify-center">
+                  <img
+                    alt="lock"
+                    loading="lazy"
+                    width={259}
+                    height={500}
+                    decoding="async"
+                    data-nimg={1}
+                    className="w-auto h-[18rem] sm:h-[22rem] md:h-[25rem] lg:h-[30rem] object-contain transition-all duration-300"
+                    src="/images/lock.png"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
               </motion.div>
             </div>
           </div>

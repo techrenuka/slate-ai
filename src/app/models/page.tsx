@@ -35,19 +35,19 @@ export default function Models() {
               "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)",
           }}
         >
-          <div className="mx-auto lg:max-w-[80%] max-w-full px-[1em] lg:px-0 flex-grow lg:py-[8.5em] py-[3em]  ">
+          <div className="mx-auto lg:max-w-[80%] max-w-full px-4 sm:px-6 lg:px-0 flex-grow py-[6em] sm:py-12 md:py-16 lg:py-[8.5em]">
             <div className="flex justify-center">
-              <h1 className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-6xl inline-flex font-bold lg:leading-[1.3em] leading-[1.2em]">
+              <h1 className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-4xl sm:text-5xl lg:text-6xl inline-flex font-bold leading-[1.2em] lg:leading-[1.3em] text-center">
                 AI Models
               </h1>
             </div>
-            <p className="text-[#aaaaaa] pt-3 text-center font-[400] text-[1.5em] font-urbanist">
+            <p className="text-[#aaaaaa] pt-3 text-center font-[400] text-lg sm:text-xl lg:text-[1.5em] font-urbanist max-w-3xl mx-auto">
               AI Models we use to solve business problems
             </p>
           </div>
         </div>
         
-        <div className="flex-grow flex flex-col lg:py-[7.5em] py-[3em] flex">
+        <div className="flex-grow flex flex-col lg:py-[7.5em] py-[3em]">
           {/* Search Bar */}
         <div className="w-full max-w-3xl mx-auto px-4 mb-8">
           <div className="relative">
@@ -98,7 +98,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -322,7 +322,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -494,7 +494,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -622,7 +622,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -742,7 +742,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -897,7 +897,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e2cc0584-72ba-459a-b032-decab8384325"
+                                src="/images/openai.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1108,7 +1108,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1251,7 +1251,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1372,7 +1372,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1499,7 +1499,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1648,7 +1648,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1796,7 +1796,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/fea2708a-b63a-4064-b997-b6477d71264a"
+                                src="/images/anthropic.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -1998,7 +1998,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2131,7 +2131,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2307,7 +2307,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2430,7 +2430,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2563,7 +2563,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2685,7 +2685,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/f1b17ecf-7a0e-4bbd-a9ff-9df9d42f42ae"
+                                src="/images/google.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -2905,7 +2905,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8b28bba1-2eff-40a9-afeb-bded8c06a0e5"
+                                src="/images/nousresearch.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3039,7 +3039,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8b28bba1-2eff-40a9-afeb-bded8c06a0e5"
+                                src="/images/nousresearch.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3161,7 +3161,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8b28bba1-2eff-40a9-afeb-bded8c06a0e5"
+                                src="/images/nousresearch.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3311,7 +3311,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8b28bba1-2eff-40a9-afeb-bded8c06a0e5"
+                                src="/images/nousresearch.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3455,7 +3455,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8b28bba1-2eff-40a9-afeb-bded8c06a0e5"
+                                src="/images/nousresearch.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3653,7 +3653,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/ef9ddf32-ff98-4f36-a47a-8547d9c80528"
+                                src="/images/Sao10K.jpg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -3846,7 +3846,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/929f26e6-b979-4695-bf4b-40d69beee09d"
+                                src="/images/fireworks_ai.webp"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -6331,7 +6331,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/e6927903-8981-4f23-8932-2faf5a475c72"
+                                src="/images/microsoft.png"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -6514,7 +6514,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/dd5e3aac-43db-402e-85a3-99d65573a402"
+                                src="/images/openchat.webp"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -6647,7 +6647,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/dd5e3aac-43db-402e-85a3-99d65573a402"
+                                src="/images/openchat.webp"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -6848,7 +6848,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8ac1770a-c56b-4617-9b85-1073dfc519bc"
+                                src="/images/mistral_ai.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -7021,7 +7021,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8ac1770a-c56b-4617-9b85-1073dfc519bc"
+                                src="/images/mistral_ai.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -7184,7 +7184,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8ac1770a-c56b-4617-9b85-1073dfc519bc"
+                                src="/images/mistral_ai.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -7313,7 +7313,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8ac1770a-c56b-4617-9b85-1073dfc519bc"
+                                src="/images/mistral_ai.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />
@@ -7442,7 +7442,7 @@ export default function Models() {
                           <div className="items-center mb-6 grid grid-cols-12 ">
                             <div className="w-12 h-12 rounded-full col-span-2 bg-black flex items-center justify-center mr-4 transition-all duration-300 ease-in-out transform hover:scale-110">
                               <img
-                                src="https://admin.ai.avinashi.dev/assets/8ac1770a-c56b-4617-9b85-1073dfc519bc"
+                                src="/images/mistral_ai.jpeg"
                                 alt="google"
                                 className="w-12 h-12 rounded-full"
                               />

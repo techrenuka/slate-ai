@@ -58,7 +58,7 @@ export default function BusinessFunction() {
 
   return (
     <div>
-      <section className="lg:py-[7.5em] px-[1em] lg:px-0 py-[3em]">
+      <section className="lg:py-[7.5em] px-[1em] lg:px-0 pt-[3em]">
         <div
           className="w-full"
           style={{

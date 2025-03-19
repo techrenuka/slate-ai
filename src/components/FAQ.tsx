@@ -7,25 +7,25 @@ export default function FAQ() {
 
   const faqData = [
     {
-      question: "What sets an AI agency from India apart from others globally?",
+      question: "What sets an AI agency from UK apart from others globally?",
       answer:
-        "Indian AI agencies, particularly industry leaders like ours, bring a unique blend of technical expertise and cost-effectiveness. We've got a massive pool of skilled developers and data scientists, many trained at top institutes and with experience in Silicon Valley. Our teams are renowned for their innovative problem-solving skills and ability to handle complex projects. As one of the foremost AI agencies in India, we've consistently delivered cutting-edge solutions to global clients. Plus, the time zone difference often works in favor of international clients, allowing for round-the-clock development and support.",
+        "UK AI agencies, particularly industry leaders like ours, bring a unique blend of technical expertise and cost-effectiveness. We've got a massive pool of skilled developers and data scientists, many trained at top institutes and with experience in Silicon Valley. Our teams are renowned for their innovative problem-solving skills and ability to handle complex projects. As one of the foremost AI agencies in UK, we've consistently delivered cutting-edge solutions to global clients. Plus, the time zone difference often works in favor of international clients, allowing for round-the-clock development and support.",
     },
     {
       question: "How can an AI agency help my business stay competitive?",
       answer:
-        "A leading AI agency like ours can give your business a serious edge. We'll help you automate repetitive tasks, freeing up your team for more creative work. Our advanced AI solutions, developed by some of India's top AI talent, can crunch through massive amounts of data to spot trends and opportunities you might miss. We can also help you personalize customer experiences, predict market changes, and optimize your operations. It's like giving your business a superpower, backed by our track record of success with both Fortune 500 companies and innovative startups.",
+        "A leading AI agency like ours can give your business a serious edge. We'll help you automate repetitive tasks, freeing up your team for more creative work. Our advanced AI solutions, developed by some of UK's top AI talent, can crunch through massive amounts of data to spot trends and opportunities you might miss. We can also help you personalize customer experiences, predict market changes, and optimize your operations. It's like giving your business a superpower, backed by our track record of success with both Fortune 500 companies and innovative startups.",
     },
     {
       question:
         "What are the current trends in AI that businesses should be aware of?",
       answer:
-        "As a frontrunner in India's AI landscape, we're always at the cutting edge of AI trends. We're seeing huge strides in natural language processing. Computer vision is another hot area, with applications in everything from self-driving cars to medical diagnostics. Explainable AI is gaining traction as businesses need to understand how AI makes decisions. And don't forget about edge AI, which brings powerful processing right to your devices. Our team of top AI researchers and developers are often invited to speak about these trends at major conferences.",
+        "As a frontrunner in UK's AI landscape, we're always at the cutting edge of AI trends. We're seeing huge strides in natural language processing. Computer vision is another hot area, with applications in everything from self-driving cars to medical diagnostics. Explainable AI is gaining traction as businesses need to understand how AI makes decisions. And don't forget about edge AI, which brings powerful processing right to your devices. Our team of top AI researchers and developers are often invited to speak about these trends at major conferences.",
     },
     {
       question: "How does an AI agency ensure data privacy and security?",
       answer:
-        "Data privacy is our top priority, and as a leading AI agency, we set the standard for data protection in India. We use state-of-the-art encryption for all data transfers and storage. Our team follows strict data handling protocols and we're up to date with global privacy regulations like GDPR. We also build privacy features right into our AI models, using advanced techniques like federated learning when possible. Plus, we'll work with you to create a clear data governance plan tailored to your needs, drawing on our extensive experience with diverse clients.",
+        "Data privacy is our top priority, and as a leading AI agency, we set the standard for data protection in UK. We use state-of-the-art encryption for all data transfers and storage. Our team follows strict data handling protocols and we're up to date with global privacy regulations like GDPR. We also build privacy features right into our AI models, using advanced techniques like federated learning when possible. Plus, we'll work with you to create a clear data governance plan tailored to your needs, drawing on our extensive experience with diverse clients.",
     },
   ];
 

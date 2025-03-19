@@ -16,11 +16,11 @@ export default function Industries() {
                             "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"
                     }}
                 >
-                    <div className="mx-auto flex flex-col items-center justify-center w-full px-4 lg:px-0 py-20 lg:py-[10em] mb-[5em]">
-                        <h1 className="bg-gradient-to-l from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-4xl lg:text-6xl inline-flex font-bold text-center leading-tight">
+                    <div className="mx-auto flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-8 lg:px-0 py-[6em] sm:py-16 md:py-20 lg:py-[10em] mb-[3em] sm:mb-[4em] md:mb-[5em]">
+                        <h1 className="bg-gradient-to-l from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-6xl inline-flex font-bold text-center leading-tight max-w-[90%] sm:max-w-[80%] md:max-w-[70%]">
                             Transforming Industries with AI/ML Excellence
                         </h1>
-                        <p className="text-xl lg:text-2xl text-center font-[500] site-h3 pt-1 w-full text-[#808080]">
+                        <p className="text-lg sm:text-xl md:text-2xl text-center font-[500] site-h3 pt-1 sm:pt-2 md:pt-3 w-full max-w-[95%] sm:max-w-[85%] md:max-w-[75%] text-[#808080]">
                             Real Success Stories: Transforming Industries with AI
                         </p>
                     </div>

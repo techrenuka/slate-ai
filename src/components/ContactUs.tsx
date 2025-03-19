@@ -5,7 +5,7 @@ import { section } from "framer-motion/client";
 export default function ContactUs() {
   return (
     <div>
-      <section className="lg:py-[7.5em] px-[1em] lg:px-0 py-[3em]" id="contact">
+      <section className="lg:py-[7.5em] px-[1em] lg:px-0 pb-[3em]" id="contact">
         <section
           className="lg:max-w-[80%] max-w-full mx-auto "
           style={{
