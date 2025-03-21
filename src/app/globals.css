@@ -164,3 +164,35 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 5 - 1rem * 4));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.hover\:pause:hover .animate-scroll {
+  animation-play-state: paused;
+}
+
+.mySwiper .swiper-pagination-bullet {
+  background: #808080;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background: #00a6ff;
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}
