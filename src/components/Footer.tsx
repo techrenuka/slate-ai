@@ -54,9 +54,10 @@ export default function Footer() {
               </h6>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-3">
+                <Link href="/contact">
                   <div className="text-faro flex items-center rounded-full text-[#bbb] gap-4 font-[600] group/bento cursor-pointer text-[26px] leading-[36.41px] transition-all duration-500">
                     Say Hello
-                    <Link href="/contact">
+                    
                       <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in-out from-[#00A6FF] via-[#FF5959] to-[#FFC073]">
                         <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out">
                           <svg
@@ -76,14 +77,15 @@ export default function Footer() {
                           </svg>
                         </div>
                       </div>
-                    </Link>
+                    
                   </div>
+                  </Link>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <div className="text-faro flex items-center rounded-full text-[#bbb] gap-4 font-[600] group/bento cursor-pointer text-[26px] leading-[36.41px] transition-all duration-500">
+                  <div className="text-faro flex items-center rounded-full text-[#bbb] gap-4 font-[600] group/bento cursor-pointer text-[26px] leading-[36.41px] transition-all duration-500" onClick={() => setIsSchedulePopupOpen(true)}>
                     Schedule a&nbsp;Call
-                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in-out from-[#00A6FF] via-[#FF5959] to-[#FFC073]" onClick={() => setIsSchedulePopupOpen(true)}>
-                      <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out" onClick={() => setIsSchedulePopupOpen(true)}>
+                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in-out from-[#00A6FF] via-[#FF5959] to-[#FFC073]" >
+                      <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out">
                         <svg
                           stroke="currentColor"
                           fill="none"
@@ -106,11 +108,11 @@ export default function Footer() {
                 <div className="flex flex-wrap gap-3r">
                   <div 
                     className="text-faro flex items-center rounded-full text-[#bbb] gap-4 font-[600] group/bento cursor-pointer text-[26px] leading-[36.41px] transition-all duration-500"
-                    
+                    onClick={() => setIsPocPopupOpen(true)}
                   >
                     Request a Free PoC
-                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in-out from-[#00A6FF] via-[#FF5959] to-[#FFC073]" onClick={() => setIsPocPopupOpen(true)}>
-                      <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out" onClick={() => setIsPocPopupOpen(true)}>
+                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in- onClick={() => setIsPocPopupOpen(true)}out from-[#00A6FF] via-[#FF5959] to-[#FFC073]">
+                      <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out">
                         <svg
                           stroke="currentColor"
                           fill="none"

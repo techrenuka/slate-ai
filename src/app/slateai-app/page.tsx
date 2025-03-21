@@ -134,7 +134,7 @@ export default function SlateAiApp() {
       </section>
 
       {/* Mobile App Showcase Section */}
-      <section className="py-24 overflow-hidden mx-auto max-w-[75%]">
+      <section className="py-24 overflow-hidden mx-auto 2xl:max-w-[75%]">
         <div className="w-full mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -229,6 +229,7 @@ export default function SlateAiApp() {
           </div>
         </div>
       </section>
+      
       {/* Features Section */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -558,7 +559,7 @@ export default function SlateAiApp() {
                 excerpt: "Discover how artificial intelligence is revolutionizing the property management industry...",
                 category: "Technology",
                 readTime: "5 min read",
-                image: "/images/blog/ai-property-management.jpg",
+                image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
                 date: "Oct 15, 2023"
               },
               {
@@ -566,7 +567,7 @@ export default function SlateAiApp() {
                 excerpt: "Learn effective strategies for maintaining properties while optimizing costs...",
                 category: "Management",
                 readTime: "4 min read",
-                image: "/images/blog/property-maintenance.jpg",
+                image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 date: "Oct 12, 2023"
               },
               {
@@ -574,7 +575,7 @@ export default function SlateAiApp() {
                 excerpt: "Explore eco-friendly approaches to property management that benefit both environment and profits...",
                 category: "Sustainability",
                 readTime: "6 min read",
-                image: "/images/blog/sustainable-properties.jpg",
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1313&q=80",
                 date: "Oct 10, 2023"
               }
             ].map((article, index) => (
