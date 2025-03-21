@@ -9,13 +9,32 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import dynamic from 'next/dynamic';
+import { useState, useEffect, useRef } from 'react';
 
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
-import { useRef } from 'react';
-
 export default function SlateAiApp() {
   const videoSectionRef = useRef<HTMLElement>(null);
+  const [isVideoVisible, setIsVideoVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVideoVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      if (videoSectionRef.current) {
+        observer.unobserve(videoSectionRef.current);
+      }
+    };
+  }, []);
 
   const scrollToVideo = () => {
     videoSectionRef.current?.scrollIntoView({ 
@@ -322,7 +341,7 @@ export default function SlateAiApp() {
               url="/video/Slate AI.mp4"
               width="100%"
               height="100%"
-              playing
+              playing={isVideoVisible}
               loop
               muted={false}
               controls
@@ -539,7 +558,7 @@ export default function SlateAiApp() {
                 excerpt: "Discover how artificial intelligence is revolutionizing the property management industry...",
                 category: "Technology",
                 readTime: "5 min read",
-                image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                image: "/images/blog/ai-property-management.jpg",
                 date: "Oct 15, 2023"
               },
               {
@@ -547,7 +566,7 @@ export default function SlateAiApp() {
                 excerpt: "Learn effective strategies for maintaining properties while optimizing costs...",
                 category: "Management",
                 readTime: "4 min read",
-                image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                image: "/images/blog/property-maintenance.jpg",
                 date: "Oct 12, 2023"
               },
               {
@@ -555,7 +574,7 @@ export default function SlateAiApp() {
                 excerpt: "Explore eco-friendly approaches to property management that benefit both environment and profits...",
                 category: "Sustainability",
                 readTime: "6 min read",
-                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1513&q=80",
+                image: "/images/blog/sustainable-properties.jpg",
                 date: "Oct 10, 2023"
               }
             ].map((article, index) => (
