@@ -94,7 +94,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <a href="/business-functions/Finance & Accounting" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-4 font-[400] group/bento cursor-pointer text-sm sm:text-base md:text-lg lg:text-[1.25em] py-2 sm:py-3 px-4 sm:px-6 transition-all duration-500">
@@ -102,7 +102,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -172,7 +172,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <a href="/business-functions/Strategic Management" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-4 font-[400] group/bento cursor-pointer text-sm sm:text-base md:text-lg lg:text-[1.25em] py-2 sm:py-3 px-4 sm:px-6 transition-all duration-500">
@@ -180,7 +180,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -244,7 +244,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 md:gap-5">
+                                    {/* <div className="flex gap-3 sm:gap-4 md:gap-5">
                                         <a href="/business-functions/Sales & Marketing" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-3 sm:gap-4 font-[400] group/bento cursor-pointer text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-5 lg:px-6 transition-all duration-500">
@@ -252,7 +252,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -321,7 +321,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 md:gap-5">
+                                    {/* <div className="flex gap-3 sm:gap-4 md:gap-5">
                                         <a href="/business-functions/Research & Innovation" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-3 sm:gap-4 font-[400] group/bento cursor-pointer text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-5 lg:px-6 transition-all duration-500">
@@ -329,7 +329,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -392,7 +392,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 md:gap-5">
+                                    {/* <div className="flex gap-3 sm:gap-4 md:gap-5">
                                         <a href="/business-functions/Human Resources" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-3 sm:gap-4 font-[400] group/bento cursor-pointer text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-5 lg:px-6 transition-all duration-500">
@@ -400,7 +400,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -469,7 +469,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 md:gap-5">
+                                    {/* <div className="flex gap-3 sm:gap-4 md:gap-5">
                                         <a href="/business-functions/Information Technology" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-3 sm:gap-4 font-[400] group/bento cursor-pointer text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-5 lg:px-6 transition-all duration-500">
@@ -477,7 +477,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -550,7 +550,7 @@ export default function AIInBusiness() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 md:gap-5">
+                                    {/* <div className="flex gap-3 sm:gap-4 md:gap-5">
                                         <a href="/business-functions/Customer Service" className="w-auto">
                                             <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] custom-shadow via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full">
                                                 <div className="text-white flex items-center bg-[#181818] rounded-full gap-3 sm:gap-4 font-[400] group/bento cursor-pointer text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-5 lg:px-6 transition-all duration-500">
@@ -558,7 +558,7 @@ export default function AIInBusiness() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>

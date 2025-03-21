@@ -49,7 +49,7 @@ export default function Models() {
         
         <div className="flex-grow flex flex-col lg:py-[7.5em] py-[3em]">
           {/* Search Bar */}
-        <div className="w-full max-w-3xl mx-auto px-4 mb-8">
+        {/* <div className="w-full max-w-3xl mx-auto px-4 mb-8">
           <div className="relative">
             <input
               type="text"
@@ -76,7 +76,7 @@ export default function Models() {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
           <div className="w-full">
             {/* Model Categories */}
             <div>

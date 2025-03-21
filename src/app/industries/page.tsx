@@ -158,7 +158,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Finance">
                                                 <div className="w-auto">
@@ -170,7 +170,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -306,7 +306,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Retail">
                                                 <div className="w-auto">
@@ -318,7 +318,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -463,7 +463,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Logistics">
                                                 <div className="w-auto">
@@ -475,7 +475,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -628,7 +628,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Healthcare">
                                                 <div className="w-auto">
@@ -640,7 +640,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -786,7 +786,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Manufacturing">
                                                 <div className="w-auto">
@@ -798,7 +798,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -933,7 +933,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/Fitness">
                                                 <div className="w-auto">
@@ -945,7 +945,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -1108,7 +1108,7 @@ export default function Industries() {
                                             </div>
                                         </div>
                                     </motion.div>
-                                    <div className="flex gap-5">
+                                    {/* <div className="flex gap-5">
                                         <div className="">
                                             <a href="/industries/E-commerce">
                                                 <div className="w-auto">
@@ -1120,7 +1120,7 @@ export default function Industries() {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>

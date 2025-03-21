@@ -83,7 +83,9 @@ export default function Header() {
               { href: '/industries', label: 'Industries' },
               { href: '/ai-business', label: 'AI In Business' },
               { href: '/services', label: 'Services' },
+              { href: '/blogs', label: 'Blogs' },
               { href: '/contact', label: 'Contact Us' },
+              { href: '/slateai-app', label: 'Slate AI APP' },
             ].map((link, index) => (
               <motion.div
                 key={link.href}
@@ -93,7 +95,9 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className="text-white hover:text-[#00A6FF] transition-colors text-xl font-medium"
+                  className={`text-white hover:text-[#00A6FF] transition-colors text-xl font-medium ${
+                    link.href === '/slateai-app' ? 'border border-[#00A6FF] px-6 py-2 rounded-full hover:bg-gradient-to-r hover:from-[#00A6FF] hover:via-[#0066FF] hover:to-[#00A6FF] hover:border-transparent hover:shadow-[0_0_10px_#00A6FF]' : ''
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -111,6 +115,7 @@ export default function Header() {
             { href: '/industries', label: 'Industries' },
             { href: '/ai-business', label: 'AI In Business' },
             { href: '/services', label: 'Services' },
+            { href: '/blogs', label: 'Blogs' },
             { href: '/contact', label: 'Contact Us' },
           ].map((link, index) => (
             <motion.div

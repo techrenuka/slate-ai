@@ -105,13 +105,13 @@ export default function Footer() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-3r">
+                <div className="flex flex-wrap gap-3">
                   <div 
                     className="text-faro flex items-center rounded-full text-[#bbb] gap-4 font-[600] group/bento cursor-pointer text-[26px] leading-[36.41px] transition-all duration-500"
                     onClick={() => setIsPocPopupOpen(true)}
                   >
                     Request a Free PoC
-                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in- onClick={() => setIsPocPopupOpen(true)}out from-[#00A6FF] via-[#FF5959] to-[#FFC073]">
+                    <div className="relative p-[3px] inline-block rounded-full group-hover/bento:bg-gradient-to-r transition-all duration-300 ease-in-out from-[#00A6FF] via-[#FF5959] to-[#FFC073]">
                       <div className="p-2 bg-[#313131] rounded-full w-full h-full group-hover/bento:rotate-45 transition-all duration-500 ease-in-out">
                         <svg
                           stroke="currentColor"

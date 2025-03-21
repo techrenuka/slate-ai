@@ -97,7 +97,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-PoC-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -105,7 +105,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -175,7 +175,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/Custom-AI-Assistant-Chatbot-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -183,7 +183,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -251,7 +251,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-Strategy-and-Consulting" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -259,7 +259,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -329,7 +329,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-Agent-Framework-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -337,7 +337,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -408,7 +408,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/Retrieval-Augmented-Generation-RAG-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -416,7 +416,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -484,7 +484,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-Integration-with-Enterprise-Data" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -492,7 +492,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -560,7 +560,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/Custom-AI-Solution-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -568,7 +568,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -639,7 +639,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/Advanced-Prompt-Engineering" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -647,7 +647,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -715,7 +715,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-ML-Ops-Management" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -723,7 +723,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -793,7 +793,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-Cost-Optimization" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -801,7 +801,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>
@@ -872,7 +872,7 @@ export default function Services() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="/services/AI-Learning-and-Development" className="inline-block">
                                             <div className="bg-gradient-to-r from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow">
                                                 <div className="text-white bg-[#181818] rounded-full px-6 py-3 text-sm sm:text-base md:text-lg lg:text-[1.25em] font-[400] transition-all duration-500">
@@ -880,7 +880,7 @@ export default function Services() {
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </motion.div>
                         </div>

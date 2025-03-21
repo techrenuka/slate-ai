@@ -67,7 +67,7 @@ export const TypewriterEffectSmooth = ({
   const currentWord = wordsArray[currentWordIndex];
   
   return (
-    <div className={cn("flex justify-center items-center space-x-1 my-6", className)}>
+    <div className={cn("flex justify-center items-center space-x-1 my-1", className)}>
       <div ref={scope} className="flex justify-center">
         <div className="text-3xl md:text-5xl font-medium">
           {currentWord.text.map((char, index) => (

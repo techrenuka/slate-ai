@@ -70,7 +70,8 @@ export const TracingBeam = ({
       ref={ref}
       className={cn("relative w-full max-w-4xl mx-auto h-full", className)}
     >
-      <div className="absolute -left-4 md:-left-12 lg:-left-16 top-3">
+      {/* Update the outer div class to show on desktop only */}
+      <div className="absolute hidden lg:block -left-4 md:-left-12 lg:-left-16 top-3">
         <motion.div
           transition={{
             duration: 0.1,
@@ -82,7 +83,7 @@ export const TracingBeam = ({
                 ? "none"
                 : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
-          className="hidden lg:flex ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm items-center justify-center"
+          className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm items-center justify-center"
         >
           <motion.div
             transition={{
@@ -102,7 +103,7 @@ export const TracingBeam = ({
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
           height={svgHeight}
-          className="ml-4 hidden md:block"
+          className="ml-4 block"
           aria-hidden="true"
           style={{ minHeight: '100%' }}
         >
@@ -142,7 +143,8 @@ export const TracingBeam = ({
           </defs>
         </svg>
       </div>
-      <div ref={contentRef} className="md:pl-16">{children}</div>
+      {/* Update content padding to only apply on desktop */}
+      <div ref={contentRef} className="lg:pl-16">{children}</div>
     </motion.div>
   );
 };

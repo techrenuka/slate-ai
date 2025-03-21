@@ -37,7 +37,7 @@ export default function SlateAiApp() {
   }, []);
 
   const scrollToVideo = () => {
-    videoSectionRef.current?.scrollIntoView({ 
+    videoSectionRef.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
@@ -58,7 +58,7 @@ export default function SlateAiApp() {
           }}
         />
         <div className="relative z-10 mx-auto flex flex-col lg:flex-row items-center justify-between w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="w-full lg:w-1/2 text-left lg:pr-12">
+          <div className="w-full pt-[7em] lg:w-1/2 text-left lg:pr-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -88,11 +88,11 @@ export default function SlateAiApp() {
                   <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link id="slateAiDemo" href="#" 
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToVideo();
-        }} className="text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium">
+              <Link id="slateAiDemo" href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToVideo();
+                }} className="text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium">
                 Watch Demo
               </Link>
             </motion.div>
@@ -120,7 +120,7 @@ export default function SlateAiApp() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full lg:w-1/2 mt-12 lg:mt-0"
+            className="w-full pb-[7em] lg:w-1/2 mt-12 lg:mt-0"
           >
             <div className="relative">
               <img
@@ -134,13 +134,13 @@ export default function SlateAiApp() {
       </section>
 
       {/* Mobile App Showcase Section */}
-      <section className="py-24 overflow-hidden mx-auto 2xl:max-w-[75%]">
+      <section className="py-10 overflow-hidden mx-auto 2xl:max-w-[75%]">
         <div className="w-full mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-gradient-to-b from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight mb-16"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-gradient-to-b from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight mb-5"
           >
             Amazing Visual Experience
           </motion.h2>
@@ -229,9 +229,9 @@ export default function SlateAiApp() {
           </div>
         </div>
       </section>
-      
+
       {/* Features Section */}
-      <section className="py-24">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -337,7 +337,7 @@ export default function SlateAiApp() {
             transition={{ duration: 0.8 }}
             className="relative aspect-video rounded-xl overflow-hidden"
           >
-            
+
             <ReactPlayer
               url="/video/Slate AI.mp4"
               width="100%"
@@ -533,7 +533,7 @@ export default function SlateAiApp() {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Blog and Articles Section */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -609,11 +609,11 @@ export default function SlateAiApp() {
                   <p className="text-[#aaaaaa] mb-6">
                     {article.excerpt}
                   </p>
-                  <Link 
+                  <Link
                     href={`/blog/${article.title.toLowerCase().replace(/\s+/g, '-')}`}
                     className="inline-flex items-center text-[#00a6ff] hover:text-[#ff5959] transition-colors duration-300"
                   >
-                    Read More 
+                    Read More
                     <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>

@@ -56,7 +56,8 @@ export default function AiModeling() {
   
   return (
     <div>
-      <section ref={sectionRef} className="lg:py-[7.5em] lg:px-10 hidden lg:flex py-[3em] bg-black">
+      {/* Desktop version with parallax images */}
+      <section ref={sectionRef} className="hidden lg:block lg:py-[7.5em] lg:px-10 bg-black">
         <div className="pb-40">
           <div className="relative">
             <div style={{ 
@@ -230,9 +231,43 @@ export default function AiModeling() {
       </section>
 
 
-      <div className="max-w-4xl mx-auto px-4 text-center">
+      {/* Mobile and Tablet version */}
+      <section className="lg:hidden bg-black py-12 px-4 sm:px-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center">
+            <h3 className="text-xl sm:text-2xl font-medium text-green-400 mb-3">
+              We've cultivated in-depth
+            </h3>
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-orange-400 text-transparent bg-clip-text">
+                AI Modelling
+              </span>
+              <span className="text-white"> Expertise to</span>
+            </h2>
 
-      </div>
+            <div className="mb-8">
+              <TypewriterEffectSmooth words={words} />
+            </div>
+
+            <p className="text-[#808080] text-base sm:text-lg mb-8 font-urbanist">
+              We preach UX, Scalability, Ease of Deployment,
+              Integrations and Ongoing Costs right from beginning to
+              avoid any surprises
+            </p>
+
+            <div className="flex justify-center">
+              <a href="/models" className="inline-block">
+                <div className="bg-gradient-to-r w-fit from-[rgba(0,166,255,0.7)] via-[rgba(255,89,89,0.7)] to-[rgba(255,192,115,0.7)] p-[2px] rounded-full custom-shadow group">
+                  <div className="text-white flex items-center bg-[#181818] rounded-full gap-4 font-[400] cursor-pointer text-base sm:text-lg leading-[1em] py-3 px-8 sm:px-12 transition-all duration-500 group-hover:bg-[#222222] relative overflow-hidden">
+                    <span className="relative z-10">Explore Models</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <style jsx global>{`
         @keyframes blink {
