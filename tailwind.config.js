@@ -17,6 +17,7 @@ module.exports = {
     extend: {
       animation: {
         aurora: "aurora 60s linear infinite",
+        shimmer: "shimmer 1.5s infinite"
       },
       keyframes: {
         aurora: {
@@ -26,6 +27,11 @@ module.exports = {
           to: {
             backgroundPosition: "350% 50%, 350% 50%",
           },
+        },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)"
+          }
         },
       },
     },

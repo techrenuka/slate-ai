@@ -1,8 +1,84 @@
 "use client";
 import { motion } from "framer-motion";
 import { section } from "framer-motion/client";
+import { useState, useEffect } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function OurWork() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8 overflow-hidden bg-black">
+          <section className="mx-auto max-w-[95%] lg:max-w-[80%] flex-grow">
+            <div className="space-y-4 text-center">
+              <Skeleton className="w-32 h-6 mx-auto bg-[#181818]" />
+              <Skeleton className="w-96 h-16 mx-auto bg-[#181818]" />
+            </div>
+
+            <div className="mt-8 sm:mt-12 lg:mt-[7em] space-y-8 sm:space-y-12 lg:space-y-[10em]">
+              {/* Receipt AI Skeleton */}
+              <div className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] bg-[#181818] min-h-[500px] sm:min-h-[600px] lg:h-[44em] relative overflow-hidden">
+                <div className="flex flex-col lg:flex-row h-full">
+                  <div className="relative lg:static w-full lg:w-6/12 order-2 lg:order-1">
+                    <div className="p-6 sm:p-8 lg:p-16 h-full flex flex-col justify-center space-y-4">
+                      <Skeleton className="w-3/4 h-12 bg-[#252525]" />
+                      <Skeleton className="w-1/2 h-8 bg-[#252525]" />
+                      <Skeleton className="w-full h-24 bg-[#252525]" />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1 lg:order-2">
+                    <Skeleton className="w-full h-full bg-[#252525]" />
+                  </div>
+                </div>
+              </div>
+
+              {/* BrandAvatar AI Skeleton */}
+              <div className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] bg-[#181818] min-h-[500px] sm:min-h-[600px] lg:h-[44em] relative overflow-hidden">
+                <div className="flex flex-col lg:flex-row h-full">
+                  <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1">
+                    <Skeleton className="w-full h-full bg-[#252525]" />
+                  </div>
+                  <div className="relative lg:static w-full lg:w-6/12 order-2">
+                    <div className="p-6 sm:p-8 lg:p-16 h-full flex flex-col justify-center space-y-4">
+                      <Skeleton className="w-3/4 h-12 bg-[#252525]" />
+                      <Skeleton className="w-1/2 h-8 bg-[#252525]" />
+                      <Skeleton className="w-full h-24 bg-[#252525]" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* WindmillTwin AI Skeleton */}
+              <div className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] bg-[#181818] min-h-[500px] sm:min-h-[600px] lg:h-[44em] relative overflow-hidden">
+                <div className="flex flex-col lg:flex-row h-full">
+                  <div className="relative lg:static w-full lg:w-6/12 order-2 lg:order-1">
+                    <div className="p-6 sm:p-8 lg:p-16 h-full flex flex-col justify-center space-y-4">
+                      <Skeleton className="w-3/4 h-12 bg-[#252525]" />
+                      <Skeleton className="w-1/2 h-8 bg-[#252525]" />
+                      <Skeleton className="w-full h-24 bg-[#252525]" />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1 lg:order-2">
+                    <Skeleton className="w-full h-full bg-[#252525]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    );
+  }
   return (
     <div>
       <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8 overflow-hidden bg-black">
@@ -70,8 +146,38 @@ export default function OurWork() {
               transition={{ duration: 0.8 }}
             >
               <div className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] bg-[#181818] min-h-[500px] sm:min-h-[600px] lg:h-[44em] relative overflow-hidden">
-                <div className="flex flex-col lg:flex-row h-full">
-                  <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1">
+                {[1, 2, 3].map((index) => (
+                  <div key={index} className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] bg-[#181818] min-h-[500px] sm:min-h-[600px] lg:h-[44em] relative overflow-hidden">
+                    <div className="flex flex-col lg:flex-row h-full">
+                      {index % 2 === 0 ? (
+                        <>
+                          <div className="relative lg:static w-full lg:w-6/12 order-2 lg:order-1">
+                            <div className="p-6 sm:p-8 lg:p-16 h-full flex flex-col justify-center space-y-4">
+                              <Skeleton className="w-3/4 h-12 bg-[#252525]" />
+                              <Skeleton className="w-full h-24 bg-[#252525]" />
+                            </div>
+                          </div>
+                          <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1 lg:order-2">
+                            <Skeleton className="w-full h-full bg-[#252525]" />
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1">
+                            <Skeleton className="w-full h-full bg-[#252525]" />
+                          </div>
+                          <div className="relative lg:static w-full lg:w-6/12 order-2">
+                            <div className="p-6 sm:p-8 lg:p-16 h-full flex flex-col justify-center space-y-4">
+                              <Skeleton className="w-3/4 h-12 bg-[#252525]" />
+                              <Skeleton className="w-full h-24 bg-[#252525]" />
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <div className="w-full lg:w-6/12 h-[200px] sm:h-[300px] lg:h-full order-1">
                     <img
                       src="/images/ai-brandavatar.png"
                       alt="BrandAvatar AI"
@@ -95,8 +201,7 @@ export default function OurWork() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
             
             {/* Card 3 */}
             <motion.div

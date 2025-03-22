@@ -1,9 +1,18 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FAQ() {
+  const [isLoading, setIsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const faqData = [
     {
@@ -131,4 +140,48 @@ export default function FAQ() {
       </section>
     </div>
   );
+
+  if (isLoading) {
+    return (
+      <div>
+        <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <div className="h-8 w-48 mx-auto bg-[#252525] rounded-md mb-3" />
+            <div className="h-12 w-96 mx-auto bg-[#252525] rounded-md" />
+          </motion.div>
+
+          <section className="mx-auto my-6 sm:my-8 lg:my-10 w-full sm:max-w-[80%] lg:max-w-[60%] px-4 sm:px-6 lg:px-0">
+            <div className="relative min-h-[350px] sm:min-h-[400px]">
+              <motion.div
+                initial={{ opacity: 0.5 }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="py-3 sm:py-4"
+              >
+                <div className="h-8 w-full bg-[#252525] rounded-md mb-4" />
+                <div className="h-32 w-full bg-[#252525] rounded-md" />
+              </motion.div>
+
+              <div className="flex items-center justify-between mt-8 sm:mt-10 lg:mt-12">
+                <div className="w-10 h-10 bg-[#252525] rounded-full" />
+                <div className="flex gap-2 sm:gap-3">
+                  {[0, 1, 2, 3].map((index) => (
+                    <div
+                      key={index}
+                      className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#252525]"
+                    />
+                  ))}
+                </div>
+                <div className="w-10 h-10 bg-[#252525] rounded-full" />
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    );
+  }
 }

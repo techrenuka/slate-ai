@@ -1,8 +1,6 @@
-'use client';  // Add this to specify client-side component
+'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 
 const Hero = () => {
   return (
@@ -22,19 +20,39 @@ const Hero = () => {
     
     <div className="absolute inset-0 z-20 bg-black/60"></div>
     
-    <div className="relative z-30 h-full flex justify-center items-center text-center text-white p-5">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative z-30 h-full flex justify-center items-center text-center text-white p-5"
+    >
       <div className="lg:h-2/5 h-1/2 flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <h3 className="w-full text-[#00D188] pb-2 text-2xl font-bold">
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full text-[#00D188] pb-2 text-2xl font-bold"
+          >
             Your Trusted&nbsp;AI&nbsp;Partner
-          </h3>
-          <h1 className="w-full text-5xl lg:text-6xl font-bold lg:leading-tight">
-            In the <span className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent">age-of-AI</span>
+          </motion.h3>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full text-5xl lg:text-6xl font-bold lg:leading-tight"
+          >
+            In the <motion.span 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent"
+            >age-of-AI</motion.span>
             <br />Let's make AI Move together
-          </h1>
+          </motion.h1>
         </div>
       </div>
-    </div>
+    </motion.div>
   </div>
 </section>
     

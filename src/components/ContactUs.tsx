@@ -1,12 +1,65 @@
 "use client";
 import { motion } from "framer-motion";
-import { section } from "framer-motion/client";
 import Link from "next/link";
 import RequestPocPopUp from "./popup/RequestPocPopUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactUs() {
   const [isPocPopupOpen, setIsPocPopupOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8" id="contact">
+          <section className="max-w-[95%] sm:max-w-[90%] lg:max-w-[80%] mx-auto">
+            <div className="rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] overflow-hidden contact-animation bg-[#181818]">
+              <div className="w-full min-h-[30em] lg:h-[47em] flex flex-col lg:flex-row gap-6 lg:gap-16">
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-full lg:w-[40%] h-[300px] sm:h-[400px] lg:h-auto"
+                >
+                  <div className="w-full h-full bg-[#252525]" />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-full lg:w-[60%] p-4 sm:p-6 lg:p-10 flex items-center"
+                >
+                  <div className="flex flex-col items-start w-full gap-4 sm:gap-6">
+                    <div className="h-12 w-3/4 bg-[#252525] rounded-md" />
+                    <div className="space-y-3">
+                      <div className="h-4 w-full bg-[#252525] rounded-md" />
+                      <div className="h-4 w-5/6 bg-[#252525] rounded-md" />
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-4 py-6 sm:py-8 lg:py-[4em] w-full">
+                      <div className="h-12 w-48 bg-[#252525] rounded-full" />
+                      <div className="h-12 w-48 bg-[#252525] rounded-full" />
+                    </div>
+                    <div className="space-y-3">
+                      <div className="h-4 w-full bg-[#252525] rounded-md" />
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div>
       <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8" id="contact">

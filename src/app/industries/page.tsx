@@ -1,7 +1,209 @@
 "use client";
 import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
 
 export default function Industries() {
+
+const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-black">
+                <section className="w-full max-w-full overflow-x-hidden">
+                    <div className="relative w-full" style={{
+                        background: "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"}}>
+                        <div className="mx-auto flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-8 lg:px-0 py-[6em] sm:py-16 md:py-20 lg:py-[10em] mb-[3em] sm:mb-[4em] md:mb-[5em]">
+                            <div className="w-3/4 h-12 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                            <div className="w-1/2 h-6 bg-[#181818] rounded-lg animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    {/* Finance Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0">
+                                <div className="lg:w-6/12 w-full lg:absolute end-0 h-full">
+                                    <div className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Retail Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0 lg:flex-row-reverse">
+                                <div className="lg:w-6/12 w-full lg:absolute start-0 h-full">
+                                    <div className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Logistics Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0">
+                                <div className="lg:w-6/12 w-full lg:absolute end-0 h-full">
+                                    <div className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Healthcare Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0 lg:flex-row-reverse">
+                                <div className="lg:w-6/12 w-full lg:absolute start-0 h-full">
+                                    <div className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Manufacturing Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0">
+                                <div className="lg:w-6/12 w-full lg:absolute end-0 h-full">
+                                    <div className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Fitness Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0 lg:flex-row-reverse">
+                                <div className="lg:w-6/12 w-full lg:absolute start-0 h-full">
+                                    <div className="w-full h-full lg:rounded-e-xl lg:rounded-s-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* E-commerce Skeleton */}
+                    <div className="w-full lg:pb-[10em] pb-[5em] px-4 lg:px-0 overflow-hidden">
+                        <div className="relative lg:h-[45em]">
+                            <div className="w-full flex h-full flex-wrap mx-auto lg:max-w-[80%] px-0">
+                                <div className="lg:w-6/12 w-full lg:absolute end-0 h-full">
+                                    <div className="w-full h-full lg:rounded-s-xl lg:rounded-e-none rounded-xl bg-[#181818] animate-pulse"></div>
+                                </div>
+                                <div className="lg:w-6/12 w-full h-full flex items-center">
+                                    <div className="lg:pt-0 pt-6 w-full">
+                                        <div className="w-1/3 h-10 bg-[#181818] rounded-lg mb-4 animate-pulse"></div>
+                                        <div className="w-full h-32 bg-[#181818] rounded-lg mb-6 animate-pulse"></div>
+                                        <div className="space-y-4">
+                                            {[1,2,3,4,5].map((i) => (
+                                                <div key={i} className="flex items-center gap-4">
+                                                    <div className="w-4 h-4 rounded-full bg-[#181818] animate-pulse"></div>
+                                                    <div className="w-48 h-4 bg-[#181818] rounded-lg animate-pulse"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        );
+    }
     return (
         <div className="min-h-screen flex items-center justify-center bg-black">
             <section className="w-full max-w-full overflow-x-hidden">

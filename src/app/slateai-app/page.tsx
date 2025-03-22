@@ -17,6 +17,16 @@ import { useState, useEffect, useRef } from 'react';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export default function SlateAiApp() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const videoSectionRef = useRef<HTMLElement>(null);
   const [isVideoVisible, setIsVideoVisible] = useState<boolean>(false);
 
@@ -25,9 +35,9 @@ export default function SlateAiApp() {
       ([entry]) => {
         setIsVideoVisible(entry.isIntersecting);
       },
-      { 
-        threshold: [0.3, 0.7],
-        rootMargin: '-10% 0px'
+      {
+        threshold: 0.1,
+        rootMargin: '0px'
       }
     );
 
@@ -49,11 +59,10 @@ export default function SlateAiApp() {
     });
   };
 
-
   const [selectedCategory, setSelectedCategory] = useState('Latest');
 
-  const filteredPosts = selectedCategory === 'Latest' 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === 'Latest'
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
 
@@ -72,7 +81,7 @@ export default function SlateAiApp() {
           }}
         />
         <div className="relative z-10 mx-auto flex flex-col lg:flex-row items-center justify-between w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="w-full pt-[7em] lg:w-1/2 text-left lg:pr-12">
+          <div className="w-full pt-[7em] lg:w-1/2 text-left lg:pr-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -137,18 +146,24 @@ export default function SlateAiApp() {
             className="w-full pb-[7em] lg:w-1/2 mt-12 lg:mt-0"
           >
             <div className="relative">
-              <img
-                src="/images/hero-property-management.jpg"
-                alt="Property Management Dashboard"
-                className="rounded-lg shadow-2xl"
-              />
+              <div className="relative">
+                {isLoading ? (
+                  <div className="rounded-lg shadow-2xl aspect-video w-full bg-[#181818] animate-pulse" />
+                ) : (
+                  <img
+                    src="/images/hero-property-management.jpg"
+                    alt="Property Management Dashboard"
+                    className="rounded-lg shadow-2xl w-full"
+                  />
+                )}
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Mobile App Showcase Section */}
-      <section className="py-10 overflow-hidden mx-auto w-full 2xl:max-w-[75%]">
+      <section className="py-10 overflow-hidden mx-auto w-full">
         <div className="w-full mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -177,11 +192,13 @@ export default function SlateAiApp() {
                 className="relative min-w-[280px] aspect-[9/17] rounded-[2rem]"
               >
                 <div className="relative h-full w-full overflow-hidden">
-                  <img
-                    src={image}
-                    alt={image.split('/').pop()?.split('.')[1]}
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="relative w-full h-full">
+                      <img
+                        src={image}
+                        alt={image.split('/').pop()?.split('.')[1]}
+                        className="w-full h-full object-cover"
+                      />
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -289,10 +306,10 @@ export default function SlateAiApp() {
                 features: ["Request tracking", "Vendor management", "Cost monitoring"]
               },
               {
-                title: "Lease Management",
-                description: "Digital lease agreements and tenant screening in one place.",
+                title: "Tenancy Management",
+                description: "Digital tenancy agreements and tenant screening in one place.",
                 icon: FaFileContract,
-                features: ["Online applications", "Background checks", "E-signatures"]
+                features: ["Tenant portals", "Rent collection", "Maintenance requests"]
               },
               {
                 title: "Security & Access",
@@ -363,7 +380,7 @@ export default function SlateAiApp() {
               height="100%"
               playing={isVideoVisible}
               loop
-              muted={false} 
+              muted={false}
               className="react-player"
             />
           </motion.div>
@@ -425,11 +442,17 @@ export default function SlateAiApp() {
               >
                 <div className="bg-[#181818] rounded-xl p-6 h-full hover:bg-[#1c1c1c] transition-colors duration-300">
                   <div className="mb-6">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
+                    <div className="relative w-full h-48">
+                      {isLoading ? (
+                        <div className="w-full h-full bg-[#181818] animate-pulse rounded-lg" />
+                      ) : (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      )}
+                    </div>
                   </div>
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-[#00a6ff] to-[#ff5959] text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
                     {item.step}
@@ -535,11 +558,17 @@ export default function SlateAiApp() {
                 <SwiperSlide key={index}>
                   <div className="bg-[#181818] p-8 rounded-xl relative h-full">
                     <div className="flex items-center gap-4 mb-6">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <div className="relative w-16 h-16">
+                        {isLoading ? (
+                          <div className="w-full h-full bg-[#181818] animate-pulse rounded-full" />
+                        ) : (
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.author}
+                            className="w-16 h-16 rounded-full object-cover"
+                          />
+                        )}
+                      </div>
                       <div>
                         <h4 className="text-white font-semibold">{testimonial.author}</h4>
                         <p className="text-[#aaaaaa] text-sm">{testimonial.role}</p>
@@ -574,44 +603,50 @@ export default function SlateAiApp() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             {filteredPosts.map((post) => (
-            <Link href={`/blogs/${post.id}`} key={post.id}>
-              <motion.div 
-                className="group cursor-pointer bg-[#181818] rounded-lg overflow-hidden"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="relative h-48 mb-4 overflow-hidden">
-                  <Image
-                    src={post.imageUrl}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className="text-lg font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent">
-                    {post.category}
-                  </span>
-                  <h2 className="text-xl font-semibold text-white mt-2 mb-2 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-[#00a6ff] group-hover:via-[#ff5959] group-hover:to-[#ffc073] group-hover:bg-clip-text group-hover:text-transparent">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-400 text-sm line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex items-center text-sm text-gray-500">
-                    {post.date}
+              <Link href={`/blogs/${post.id}`} key={post.id}>
+                <motion.div
+                  className="group cursor-pointer bg-[#181818] rounded-lg overflow-hidden"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="relative h-48 mb-4 overflow-hidden">
+                    <div className="relative w-full h-full">
+                      {isLoading ? (
+                        <div className="w-full h-full bg-[#181818] animate-pulse rounded-lg" />
+                      ) : (
+                        <Image
+                          src={post.imageUrl}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                  <div className="p-6">
+                    <span className="text-lg font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent">
+                      {post.category}
+                    </span>
+                    <h2 className="text-xl font-semibold text-white mt-2 mb-2 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-[#00a6ff] group-hover:via-[#ff5959] group-hover:to-[#ffc073] group-hover:bg-clip-text group-hover:text-transparent">
+                      {post.title}
+                    </h2>
+                    <p className="text-gray-400 text-sm line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="mt-4 flex items-center text-sm text-gray-500">
+                      {post.date}
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
           </motion.div>
 
           <motion.div
@@ -631,7 +666,7 @@ export default function SlateAiApp() {
           </motion.div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#00a6ff] via-[#132638] to-[#614523] opacity-10"></div>

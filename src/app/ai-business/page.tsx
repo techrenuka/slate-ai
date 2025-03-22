@@ -2,8 +2,64 @@
 
 import { motion } from "framer-motion";
 import React from "react";
+import { useState, useEffect } from 'react';
+
+const SkeletonSection = ({ imageOnLeft = false }) => (
+  <div className="py-8 sm:py-12 md:py-16 lg:pb-[10em]">
+    <div className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]">
+      <div className="w-full flex flex-col lg:flex-row h-full mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] px-4 sm:px-6 lg:px-0">
+        <div className={`w-full lg:w-6/12 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'} h-[300px] sm:h-[400px] lg:h-full`}>
+          <div className="w-full h-full rounded-xl object-cover bg-[#252525] animate-pulse" />
+        </div>
+        <div className={`w-full lg:w-6/12 flex items-center mt-6 lg:mt-0 ${imageOnLeft ? 'lg:order-2 lg:ps-20' : 'lg:order-1'}`}>
+          <div className="w-full space-y-4">
+            <div className="h-12 w-3/4 bg-[#252525] rounded animate-pulse" />
+            <div className="h-24 w-full bg-[#252525] rounded animate-pulse" />
+            <div className="space-y-3 ps-6">
+              {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="h-4 w-4 rounded-full bg-[#252525] animate-pulse" />
+                  <div className="h-6 w-full bg-[#252525] rounded animate-pulse" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default function AIInBusiness() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen mx-auto bg-black w-full overflow-x-hidden">
+        <section>
+          <div className="bg-gradient-to-r from-[#252525] to-[#181818] animate-pulse">
+            <div className="mx-auto flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-10 py-[6em] sm:py-16 md:py-20 lg:py-[10em] mb-[3em] sm:mb-[4em] lg:mb-[5em]">
+              <div className="h-16 w-3/4 bg-[#252525] rounded animate-pulse mb-4" />
+              <div className="h-8 w-1/2 bg-[#252525] rounded animate-pulse" />
+            </div>
+          </div>
+
+          <SkeletonSection />
+          <SkeletonSection imageOnLeft={true} />
+          <SkeletonSection />
+          <SkeletonSection imageOnLeft={true} />
+        </section>
+      </div>
+    );
+  }
     return (
         <div className="min-h-screen mx-auto bg-black w-full overflow-x-hidden">
             <section>
@@ -340,7 +396,7 @@ export default function AIInBusiness() {
                 <div className="py-4 sm:py-8 md:py-12 lg:py-16 xl:py-20">
                     <div className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:min-h-[45em]">
                         <div className="w-full flex flex-col lg:flex-row h-full mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] px-3 sm:px-4 md:px-5 lg:px-6">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 lg:absolute end-0 h-[250px] sm:h-[300px] md:h-[350px] lg:h-full order-1 lg:order-2"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}

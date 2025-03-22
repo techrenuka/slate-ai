@@ -1,14 +1,24 @@
 "use client";
 
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ContactUs() {
+    const [isLoading, setIsLoading] = useState(true);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -65,6 +75,76 @@ export default function ContactUs() {
             alert('Error submitting form. Please try again.');
             console.error('Form submission error:', error);
         }
+    }
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-[#111] py-24 px-6 flex items-center justify-center">
+                <div className="w-full lg:max-w-7xl bg-[#1a1a1a] rounded-2xl overflow-hidden">
+                    <div className="flex flex-col lg:flex-row">
+                        {/* Left side - Image Skeleton */}
+                        <motion.div
+                            initial={{ opacity: 0.5 }}
+                            animate={{ opacity: [0.5, 0.8, 0.5] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                            className="lg:w-1/2 relative h-[300px] md:h-auto bg-[#222]"
+                        />
+
+                        {/* Right side - Form Skeleton */}
+                        <div className="lg:w-1/2 p-8 md:p-12">
+                            <motion.div
+                                initial={{ opacity: 0.5 }}
+                                animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                                className="h-12 w-3/4 bg-[#222] rounded-lg mb-8"
+                            />
+                            <div className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <motion.div
+                                        initial={{ opacity: 0.5 }}
+                                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        className="h-14 bg-[#222] rounded-lg"
+                                    />
+                                    <motion.div
+                                        initial={{ opacity: 0.5 }}
+                                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        className="h-14 bg-[#222] rounded-lg"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <motion.div
+                                        initial={{ opacity: 0.5 }}
+                                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        className="h-14 bg-[#222] rounded-lg"
+                                    />
+                                    <motion.div
+                                        initial={{ opacity: 0.5 }}
+                                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        className="h-14 bg-[#222] rounded-lg"
+                                    />
+                                </div>
+                                <motion.div
+                                    initial={{ opacity: 0.5 }}
+                                    animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className="h-40 bg-[#222] rounded-lg"
+                                />
+                                <motion.div
+                                    initial={{ opacity: 0.5 }}
+                                    animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className="h-14 w-full md:w-40 bg-[#222] rounded-full"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     return (

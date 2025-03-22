@@ -1,8 +1,60 @@
 "use client";
 import { motion } from "framer-motion";
 import { section } from "framer-motion/client";
+import { useState, useEffect } from "react";
 
 export default function AiSolutions() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 mx-auto">
+          <div className="rounded-3xl">
+            <div className="container mx-auto">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="block w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
+                >
+                  <div className="space-y-6">
+                    <div className="h-12 w-3/4 bg-[#252525] rounded-md" />
+                    <div className="space-y-3">
+                      <div className="h-4 w-full bg-[#252525] rounded-md" />
+                      <div className="h-4 w-5/6 bg-[#252525] rounded-md" />
+                      <div className="h-4 w-4/5 bg-[#252525] rounded-md" />
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="hidden lg:block w-full lg:w-1/2 px-4 sm:px-6 lg:px-0"
+                >
+                  <div className="flex justify-center">
+                    <div className="w-[259px] h-[500px] bg-[#252525] rounded-md" />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div>
       <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 mx-auto">

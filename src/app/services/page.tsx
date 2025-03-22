@@ -1,8 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
 
 export default function Services() {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-black !overflow-x-hidden">
+                <section className="w-full mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8 }}
+                        style={{
+                            background:
+                                "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"
+                        }}
+                    >
+                        <motion.div
+                            className="mx-auto flex flex-col items-center justify-center w-full px-4 py-[6em] md:py-16 lg:py-[10em] space-y-4 md:space-y-6"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                        >
+                            <div className="h-16 w-3/4 bg-[#252525] rounded-lg animate-pulse" />
+                            <div className="h-8 w-1/2 bg-[#252525] rounded-lg animate-pulse" />
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Service Sections Skeleton */}
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((index) => (
+                        <div key={index} className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
+                            <div className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]">
+                                <div className={`w-full h-full flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]`}>
+                                    <div className="w-full lg:w-6/12 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0">
+                                        <div className="w-full h-full rounded-xl bg-[#252525] animate-pulse" />
+                                    </div>
+                                    <div className={`w-full lg:w-1/2 flex items-center ${index % 2 === 0 ? '' : 'lg:ps-20'}`}>
+                                        <div className="w-full space-y-6">
+                                            <div className="h-12 w-3/4 bg-[#252525] rounded-lg animate-pulse" />
+                                            <div className="h-24 w-full bg-[#252525] rounded-lg animate-pulse" />
+                                            <div className="space-y-3 ps-4 sm:ps-6">
+                                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
+                                                    <div key={item} className="flex items-center gap-4">
+                                                        <div className="h-4 w-4 rounded-full bg-[#252525] animate-pulse" />
+                                                        <div className="h-6 w-full bg-[#252525] rounded-lg animate-pulse" />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-black">
             <section className="w-full mx-auto">
@@ -15,7 +81,7 @@ export default function Services() {
                             "-webkit-linear-gradient(45deg, rgb(171, 236, 219) 0%, rgb(10, 53, 89) 30%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 70%, rgb(10, 53, 89) 80%, rgb(171, 236, 219) 100%)"
                     }}
                 >
-                    <motion.div 
+                    <motion.div
                         className="mx-auto flex flex-col items-center justify-center w-full px-4 py-[6em] md:py-16 lg:py-[10em] space-y-4 md:space-y-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -42,7 +108,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -55,7 +121,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -122,7 +188,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row-reverse mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute start-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -135,7 +201,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-e-xl lg:rounded-s-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center lg:ps-20"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -190,7 +256,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* AI Strategy and Consulting -- */}
+                {/* AI Strategy and Consulting */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -200,7 +266,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -213,7 +279,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -266,7 +332,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* AI Agent Framework Development -- */}
+                {/* AI Agent Framework Development */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -276,7 +342,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row-reverse mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute start-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -289,7 +355,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-e-xl lg:rounded-s-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center lg:ps-20"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -344,7 +410,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* RAG Development -- */}
+                {/* RAG Development */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -354,7 +420,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -367,7 +433,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -423,7 +489,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* AI Integration with Enterprise Data -- */}
+                {/* AI Integration with Enterprise Data */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -433,7 +499,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row-reverse mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute start-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -446,7 +512,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-e-xl lg:rounded-s-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center lg:ps-20"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -499,7 +565,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* Custom AI Solution Development -- */}
+                {/* Custom AI Solution Development */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -509,7 +575,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -522,7 +588,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -539,7 +605,7 @@ export default function Services() {
                                     <div className="space-y-3 ps-4 sm:ps-6 pb-8 font-urbanist">
                                         {[
                                             "Tailored AI Solutions",
-                                            "Scalable Architecture Design", 
+                                            "Scalable Architecture Design",
                                             "Enterprise Integration Ready",
                                             "Performance Optimization",
                                             "Future-Proof Development"
@@ -575,7 +641,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* Advanced Prompt Engineering -- */}
+                {/* Advanced Prompt Engineering */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -585,7 +651,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row-reverse mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute start-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -598,7 +664,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-e-xl lg:rounded-s-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center lg:ps-20"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -654,7 +720,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* AI/ML Ops Management -- */}
+                {/* AI/ML Ops Management */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -664,7 +730,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -677,7 +743,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -730,7 +796,7 @@ export default function Services() {
                     </motion.div>
                 </div>
 
-                {/* AI Cost Optimization -- */}
+                {/* AI Cost Optimization */}
                 <div className="py-8 sm:py-12 md:py-16 lg:py-[10em]">
                     <motion.div
                         className="relative min-h-[30em] sm:min-h-[35em] md:min-h-[40em] lg:h-[45em]"
@@ -740,7 +806,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row-reverse mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute start-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -753,7 +819,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-e-xl lg:rounded-s-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center lg:ps-20"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -818,7 +884,7 @@ export default function Services() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full flex flex-col lg:flex-row mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] lg:max-w-[90%]">
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-6/12 lg:absolute lg:end-0 h-[300px] sm:h-[400px] lg:h-full mb-6 lg:mb-0"
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -831,7 +897,7 @@ export default function Services() {
                                     className="w-full h-full rounded-xl lg:rounded-s-xl lg:rounded-e-none object-cover"
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className="w-full lg:w-1/2 flex items-center"
                                 initial={{ opacity: 0, x: -100 }}
                                 whileInView={{ opacity: 1, x: 0 }}

@@ -1,8 +1,98 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function AboutUs() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate content loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black px-4 sm:px-6 lg:px-8">
+        <section className="w-full px-4 sm:px-6 lg:px-0 py-12 sm:py-16 lg:py-[7.5em] mx-auto">
+          <div className="flex justify-center flex-col w-full lg:max-w-[70%] pt-[3em] mx-auto">
+            {/* Skeleton for title and description */}
+            <motion.div
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="gap-4 sm:gap-6 lg:gap-[6em] grid grid-cols-1"
+            >
+              <div className="flex flex-col bg-[#181818] min-h-[30em] sm:min-h-[32em] lg:h-[35em] rounded-xl overflow-hidden md:flex-row items-center">
+                <div className="h-[250px] sm:h-[300px] md:h-full md:w-2/5 bg-[#252525]" />
+                <div className="p-5 sm:p-8 md:w-3/5 lg:p-14 space-y-4">
+                  <div className="h-8 w-3/4 bg-[#252525] rounded-md" />
+                  <div className="space-y-3">
+                    <div className="h-4 w-full bg-[#252525] rounded-md" />
+                    <div className="h-4 w-5/6 bg-[#252525] rounded-md" />
+                    <div className="h-4 w-4/5 bg-[#252525] rounded-md" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Skeleton for main image */}
+            <motion.div
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="lg:py-[5em] py-[3em]"
+            >
+              <div className="w-full h-[300px] bg-[#181818] rounded-xl" />
+            </motion.div>
+
+            {/* Skeleton for story section title */}
+            <motion.div
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="space-y-6"
+            >
+              <div className="flex justify-center">
+                <div className="h-12 w-48 bg-[#181818] rounded-lg" />
+              </div>
+              <div className="space-y-3 flex flex-col items-center">
+                <div className="h-4 w-1/2 bg-[#181818] rounded-md" />
+              </div>
+            </motion.div>
+
+            {/* Skeleton for story cards */}
+            <div className="flex flex-col gap-16 mt-16">
+              {[1, 2, 3, 4, 5].map((index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: index * 0.1 }}
+                  className="gap-4 sm:gap-6 lg:gap-[6em] grid grid-cols-1"
+                >
+                  <div className="flex flex-col bg-[#181818] min-h-[30em] sm:min-h-[32em] lg:h-[35em] rounded-xl overflow-hidden md:flex-row items-center">
+                    <div className={`h-[250px] sm:h-[300px] md:h-full md:w-2/5 bg-[#252525] ${index % 2 === 0 ? 'order-first md:order-first' : 'order-first md:order-last'}`} />
+                    <div className="p-5 sm:p-8 md:w-3/5 lg:p-14 space-y-4">
+                      <div className="h-8 w-3/4 bg-[#252525] rounded-md" />
+                      <div className="space-y-3">
+                        <div className="h-4 w-full bg-[#252525] rounded-md" />
+                        <div className="h-4 w-5/6 bg-[#252525] rounded-md" />
+                        <div className="h-4 w-4/5 bg-[#252525] rounded-md" />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-black px-4 sm:px-6 lg:px-8">
       <section className="w-full px-4 sm:px-6 lg:px-0 py-12 sm:py-16 lg:py-[7.5em] mx-auto">

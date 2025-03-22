@@ -1,9 +1,19 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
+import { motion } from "framer-motion";
 
 export default function BusinessFunction() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const items = [
     {
       title: "Finance & Accounting",
@@ -55,6 +65,41 @@ export default function BusinessFunction() {
         "/images/10.webp",
     },
   ];
+
+  if (isLoading) {
+    return (
+      <div>
+        <section className="py-8 sm:py-12 lg:py-[7.5em] px-4 sm:px-6 lg:px-8">
+          <div className="w-full">
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="space-y-4"
+            >
+              <div className="h-6 w-48 bg-[#252525] rounded-md mx-auto" />
+              <div className="h-12 w-96 bg-[#252525] rounded-md mx-auto" />
+              <div className="h-20 w-[40%] bg-[#252525] rounded-md mx-auto" />
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] pt-6 sm:pt-8 lg:pt-[2em] mx-auto">
+              {[...Array(7)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
+                  className={`${i === 3 || i === 6 ? 'lg:col-span-2' : ''} bg-[#252525] rounded-xl p-6 space-y-4`}
+                >
+                  <div className="h-48 bg-[#181818] rounded-lg" />
+                  <div className="h-6 w-3/4 bg-[#181818] rounded-md" />
+                  <div className="h-16 w-full bg-[#181818] rounded-md" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div>
