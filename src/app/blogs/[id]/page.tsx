@@ -6,8 +6,7 @@ import { motion } from 'framer-motion';
 import { useParams } from 'next/navigation';
 import { BsArrowLeft } from 'react-icons/bs';
 
-// Import the blogPosts data
-import { blogPosts } from '../page';
+import { blogPosts } from '../data';
 
 export default function BlogPost() {
   const { id } = useParams();
