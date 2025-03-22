@@ -18,20 +18,22 @@ export default function Blogs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 
         {/* Categories */}
-        <nav className="flex gap-8 mb-12 border-b border-gray-800 pb-4">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`text-lg font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent font-medium'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        <nav className="flex overflow-x-auto whitespace-nowrap pb-2 mb-12 border-b border-gray-800 hide-scrollbar">
+          <div className="flex gap-4 md:gap-8 px-4 md:px-0 min-w-full md:min-w-0">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`text-sm md:text-lg font-medium transition-colors flex-shrink-0 ${
+                  selectedCategory === category
+                    ? 'bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent font-medium'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </nav>
 
         {/* Blog Grid */}

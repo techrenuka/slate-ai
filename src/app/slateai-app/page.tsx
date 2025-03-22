@@ -9,7 +9,43 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import dynamic from 'next/dynamic';
+import { useState, useEffect, useRef } from 'react';
+
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+
 export default function SlateAiApp() {
+  const videoSectionRef = useRef<HTMLElement>(null);
+  const [isVideoVisible, setIsVideoVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVideoVisible(entry.isIntersecting);
+      },
+      { 
+        threshold: [0.3, 0.7],
+        rootMargin: '-10% 0px'
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      if (videoSectionRef.current) {
+        observer.unobserve(videoSectionRef.current);
+      }
+    };
+  }, []); // Remove isVideoVisible from dependency array
+
+  const scrollToVideo = () => {
+    videoSectionRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
       {/* Hero Section */}
@@ -25,7 +61,7 @@ export default function SlateAiApp() {
           }}
         />
         <div className="relative z-10 mx-auto flex flex-col lg:flex-row items-center justify-between w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="w-full lg:w-1/2 text-left lg:pr-12">
+        <div className="w-full pt-[7em] lg:w-1/2 text-left lg:pr-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,7 +91,11 @@ export default function SlateAiApp() {
                   <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="/demo" className="text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium">
+              <Link id="slateAiDemo" href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToVideo();
+                }} className="text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium">
                 Watch Demo
               </Link>
             </motion.div>
@@ -83,28 +123,124 @@ export default function SlateAiApp() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full lg:w-1/2 mt-12 lg:mt-0"
+            className="w-full pb-[7em] lg:w-1/2 mt-12 lg:mt-0"
           >
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                src="/images/hero-property-management.jpg"
                 alt="Property Management Dashboard"
                 className="rounded-lg shadow-2xl"
               />
-              <div className="absolute -bottom-4 -right-4 bg-[#181818] p-4 rounded-lg shadow-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Mobile App Preview"
-                  className="w-32 rounded-md"
-                />
-              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
+      {/* Mobile App Showcase Section */}
+      <section className="py-10 overflow-hidden mx-auto w-full 2xl:max-w-[75%]">
+        <div className="w-full mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-gradient-to-b from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent leading-tight mb-5"
+          >
+            Amazing Visual Experience
+          </motion.h2>
+
+
+          <div className="hidden lg:flex flex-nowrap gap-4 justify-center overflow-x-auto pb-8 px-4 scrollbar-hide">
+            {[
+              "/slate-app/3. Dashboard.png",
+              "/slate-app/13. Property Create Successfully.png",
+              "/slate-app/15. Voice input for type of property.png",
+              "/slate-app/20. Recent Activity.png",
+              "/slate-app/21. Setting.png",
+            ].map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative min-w-[280px] aspect-[9/17] rounded-[2rem]"
+              >
+                <div className="relative h-full w-full overflow-hidden">
+                  <img
+                    src={image}
+                    alt={image.split('/').pop()?.split('.')[1]}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile & Tablet View */}
+          <div className="lg:hidden">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              spaceBetween={10}
+              slidesPerView={1.2}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+                bulletClass: 'swiper-pagination-bullet !bg-white/50 !opacity-100',
+                bulletActiveClass: 'swiper-pagination-bullet-active !bg-gradient-to-r !from-[#00a6ff] !via-[#ff5959] !to-[#ffc073]',
+              }}
+              breakpoints={{
+                480: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 15,
+                },
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 25,
+                }
+              }}
+              className="mySwiper pb-12"
+            >
+              {[
+                "/slate-app/3. Dashboard.png",
+                "/slate-app/13. Property Create Successfully.png",
+                "/slate-app/15. Voice input for type of property.png",
+                "/slate-app/20. Recent Activity.png",
+                "/slate-app/21. Setting.png",
+              ].map((image, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="relative aspect-[9/17] rounded-[2rem]"
+                  >
+                    <div className="relative h-full w-full overflow-hidden">
+                      <img
+                        src={image}
+                        alt={image.split('/').pop()?.split('.')[1]}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section className="py-24">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +322,7 @@ export default function SlateAiApp() {
       </section>
 
       {/* Video Demo Section */}
-      <section className="py-24 bg-[#111111]">
+      <section ref={videoSectionRef} className="py-24 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,17 +346,15 @@ export default function SlateAiApp() {
             transition={{ duration: 0.8 }}
             className="relative aspect-video rounded-xl overflow-hidden"
           >
-            <video
-              className="w-full h-full object-cover"
-              poster="/images/video-thumbnail.webp"
-              controls
-              autoPlay
-              playsInline
+            <ReactPlayer
+              url="/video/Slate AI.mp4"
+              width="100%"
+              height="100%"
+              playing={isVideoVisible}
               loop
-            >
-              <source src="/video/Slate AI.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              muted={false} 
+              className="react-player"
+            />
           </motion.div>
         </div>
       </section>
@@ -341,10 +475,14 @@ export default function SlateAiApp() {
               }}
               pagination={{
                 clickable: true,
-                bulletActiveClass: 'swiper-pagination-bullet-active',
+                bulletClass: 'swiper-pagination-bullet !bg-white/50 !opacity-100',
+                bulletActiveClass: 'swiper-pagination-bullet-active !bg-gradient-to-r !from-[#00a6ff] !via-[#ff5959] !to-[#ffc073]',
               }}
-              navigation
-              className="testimonials-swiper pb-12"
+              navigation={{
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+              }}
+              className="testimonials-swiper pb-12 !overflow-visible"
             >
               {[
                 {
@@ -403,6 +541,111 @@ export default function SlateAiApp() {
                 </SwiperSlide>
               ))}
             </Swiper>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Blog and Articles Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent mb-6">
+              Latest Insights & Articles
+            </h2>
+            <p className="text-[#aaaaaa] text-lg max-w-2xl mx-auto">
+              Stay updated with the latest trends and best practices in property management
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "The Future of Property Management: AI and Automation",
+                excerpt: "Discover how artificial intelligence is revolutionizing the property management industry...",
+                category: "Technology",
+                readTime: "5 min read",
+                image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
+                date: "Oct 15, 2023"
+              },
+              {
+                title: "Maximizing ROI Through Smart Property Maintenance",
+                excerpt: "Learn effective strategies for maintaining properties while optimizing costs...",
+                category: "Management",
+                readTime: "4 min read",
+                image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                date: "Oct 12, 2023"
+              },
+              {
+                title: "Sustainable Property Management Practices",
+                excerpt: "Explore eco-friendly approaches to property management that benefit both environment and profits...",
+                category: "Sustainability",
+                readTime: "6 min read",
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1313&q=80",
+                date: "Oct 10, 2023"
+              }
+            ].map((article, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-[#181818] rounded-xl overflow-hidden group hover:bg-[#1c1c1c] transition-colors duration-300"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] text-white text-sm px-3 py-1 rounded-full">
+                    {article.category}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-[#808080] mb-3">
+                    <span>{article.date}</span>
+                    <span>•</span>
+                    <span>{article.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#00a6ff] transition-colors duration-300">
+                    {article.title}
+                  </h3>
+                  <p className="text-[#aaaaaa] mb-6">
+                    {article.excerpt}
+                  </p>
+                  <Link
+                    href={`/blog/${article.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="inline-flex items-center bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300"
+                  >
+                    Read More
+                    <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium"
+            >
+              View All Articles
+              <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </motion.div>
         </div>
       </section>

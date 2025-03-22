@@ -130,8 +130,7 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div
+              <div
               className="text-black py-5 xl:py-0 fade-up"
               style={{
                 translate: "none",
@@ -163,10 +162,13 @@ export default function Footer() {
                 Contact Us
               </Link>
             </div>
-          </div>
-          <h1 className="text-7xl text-center md:text-[150px] lg:text-[230px] xl:text-[300px] 2xl:text-[350px] font-bold bg-gradient-to-tl from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent opacity-85">
+            </div>
+            
+            <h1 className="text-7xl text-center md:text-[150px] lg:text-[230px] xl:text-[300px] 2xl:text-[350px] font-bold bg-gradient-to-tl from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent opacity-85">
             SLATE AI
           </h1>
+          </div>
+          
         </div>
     </footer >
     <RequestPocPopUp 

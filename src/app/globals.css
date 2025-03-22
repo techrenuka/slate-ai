@@ -196,3 +196,23 @@
   width: 24px;
   border-radius: 4px;
 }
+
+.testimonials-swiper .swiper-button-prev,
+.testimonials-swiper .swiper-button-next {
+  color: white;
+}
+
+.testimonials-swiper .swiper-button-prev:hover,
+.testimonials-swiper .swiper-button-next:hover {
+  color: #00a6ff;
+}
+
+.testimonials-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 4px;
+}
