@@ -8,6 +8,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import Image from 'next/image';
+import { blogPosts, categories, BlogPost } from '../blogs/data';
 
 import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef } from 'react';
@@ -46,6 +48,15 @@ export default function SlateAiApp() {
       block: 'start'
     });
   };
+
+
+  const [selectedCategory, setSelectedCategory] = useState('Latest');
+
+  const filteredPosts = selectedCategory === 'Latest' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
+
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
       {/* Hero Section */}
@@ -563,74 +574,45 @@ export default function SlateAiApp() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "The Future of Property Management: AI and Automation",
-                excerpt: "Discover how artificial intelligence is revolutionizing the property management industry...",
-                category: "Technology",
-                readTime: "5 min read",
-                image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
-                date: "Oct 15, 2023"
-              },
-              {
-                title: "Maximizing ROI Through Smart Property Maintenance",
-                excerpt: "Learn effective strategies for maintaining properties while optimizing costs...",
-                category: "Management",
-                readTime: "4 min read",
-                image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                date: "Oct 12, 2023"
-              },
-              {
-                title: "Sustainable Property Management Practices",
-                excerpt: "Explore eco-friendly approaches to property management that benefit both environment and profits...",
-                category: "Sustainability",
-                readTime: "6 min read",
-                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1313&q=80",
-                date: "Oct 10, 2023"
-              }
-            ].map((article, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#181818] rounded-xl overflow-hidden group hover:bg-[#1c1c1c] transition-colors duration-300"
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {filteredPosts.map((post) => (
+            <Link href={`/blogs/${post.id}`} key={post.id}>
+              <motion.div 
+                className="group cursor-pointer bg-[#181818] rounded-lg overflow-hidden"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                <div className="relative h-48 mb-4 overflow-hidden">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] text-white text-sm px-3 py-1 rounded-full">
-                    {article.category}
-                  </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-[#808080] mb-3">
-                    <span>{article.date}</span>
-                    <span>•</span>
-                    <span>{article.readTime}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#00a6ff] transition-colors duration-300">
-                    {article.title}
-                  </h3>
-                  <p className="text-[#aaaaaa] mb-6">
-                    {article.excerpt}
+                  <span className="text-lg font-medium bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent">
+                    {post.category}
+                  </span>
+                  <h2 className="text-xl font-semibold text-white mt-2 mb-2 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-[#00a6ff] group-hover:via-[#ff5959] group-hover:to-[#ffc073] group-hover:bg-clip-text group-hover:text-transparent">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-400 text-sm line-clamp-3">
+                    {post.excerpt}
                   </p>
-                  <Link
-                    href={`/blog/${article.title.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="inline-flex items-center bg-gradient-to-r from-[#00a6ff] via-[#ff5959] to-[#ffc073] bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300"
-                  >
-                    Read More
-                    <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
+                  <div className="mt-4 flex items-center text-sm text-gray-500">
+                    {post.date}
+                  </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
+            </Link>
+          ))}
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -640,7 +622,7 @@ export default function SlateAiApp() {
             className="text-center mt-12"
           >
             <Link
-              href="/blog"
+              href="/blogs"
               className="inline-flex items-center text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium"
             >
               View All Articles
