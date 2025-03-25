@@ -1,5 +1,6 @@
+import { getTransporter } from '@/lib/server-utils';
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+
 
 type PoCData = {
     firstName: string;
@@ -101,17 +102,11 @@ async function sendEmail(data: PoCData) {
     const { firstName, lastName, companyName, email, industry, message } = data;
 
     try {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD
-            }
-        });
 
-        // Admin notification email
+
+        // Update email configurations
         const adminMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM,
             to: process.env.NOTIFY_EMAIL,
             subject: `New PoC Request from ${firstName} ${lastName}`,
             html: `
@@ -127,7 +122,7 @@ async function sendEmail(data: PoCData) {
 
         // Thank you email to user
         const userMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM,
             to: email,
             subject: `Thank You for Requesting a PoC from Slate AI Solutions`,
             html: `
@@ -149,6 +144,7 @@ async function sendEmail(data: PoCData) {
         };
 
         // Send both emails
+        const transporter = await getTransporter();
         await transporter.sendMail(adminMailOptions);
         const userResponse = await transporter.sendMail(userMailOptions);
         

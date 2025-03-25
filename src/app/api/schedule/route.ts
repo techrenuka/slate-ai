@@ -1,3 +1,4 @@
+import { getTransporter } from '@/lib/server-utils';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -101,32 +102,21 @@ async function sendEmail(data: ScheduleData) {
     const { name, email, date, time, timezone, message } = data;
 
     try {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD
-            }
-        });
 
-        // Format date and time for display
-        const formattedDate = new Date(date).toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+        // Verify connection configuration
+        const transporter = await getTransporter();
+        await transporter.verify();
 
-        // Admin notification email
+        // Update email configurations
         const adminMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM,
             to: process.env.NOTIFY_EMAIL,
             subject: `New Call Schedule Request from ${name}`,
             html: `
                 <h2>New Call Schedule Request</h2>
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Requested Date:</strong> ${formattedDate}</p>
+                <p><strong>Requested Date:</strong> ${date}</p>
                 <p><strong>Requested Time:</strong> ${time}</p>
                 <p><strong>Timezone:</strong> ${timezone}</p>
                 ${message ? `<p><strong>Additional Notes:</strong></p><p>${message}</p>` : ''}
@@ -135,7 +125,7 @@ async function sendEmail(data: ScheduleData) {
 
         // Thank you email to user
         const userMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM, // Changed from GOOGLE_EMAIL
             to: email,
             subject: `Your Call with Slate AI Solutions is Scheduled`,
             html: `
@@ -145,7 +135,7 @@ async function sendEmail(data: ScheduleData) {
                     <p>Thank you for scheduling a call with Slate AI Solutions. We're looking forward to speaking with you!</p>
                     <p>Here are your call details:</p>
                     <ul>
-                        <li><strong>Date:</strong> ${formattedDate}</li>
+                        <li><strong>Date:</strong> ${date}</li>
                         <li><strong>Time:</strong> ${time}</li>
                         <li><strong>Timezone:</strong> ${timezone}</li>
                     </ul>
@@ -157,12 +147,17 @@ async function sendEmail(data: ScheduleData) {
         };
 
         // Send both emails
-        await transporter.sendMail(adminMailOptions);
-        const userResponse = await transporter.sendMail(userMailOptions);
-        
-        return { success: true, data: userResponse };
+        // Send emails with better error handling
+        try {
+            await transporter.sendMail(adminMailOptions);
+            const userResponse = await transporter.sendMail(userMailOptions);
+            return { success: true, data: userResponse };
+        } catch (emailError) {
+            console.error('Detailed email sending error:', emailError);
+            return { success: false, error: `Failed to send email: ${(emailError as Error).message || 'Unknown error'}` };
+        }
     } catch (error) {
-        console.error('Email sending error:', error);
-        return { success: false, error: 'Failed to send email' };
+        console.error('Email configuration error:', error);
+        return { success: false, error: 'Email service configuration error' };
     }
 }

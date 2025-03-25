@@ -692,10 +692,6 @@ export default function SlateAiApp() {
                   <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="/demo" className="text-white hover:text-[#00a6ff] transition-colors duration-300 text-lg font-medium flex items-center gap-2">
-                Schedule Demo
-                <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
             </div>
           </motion.div>
         </div>

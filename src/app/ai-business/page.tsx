@@ -16,7 +16,7 @@ const SkeletonSection = ({ imageOnLeft = false }) => (
             <div className="h-12 w-3/4 bg-[#252525] rounded animate-pulse" />
             <div className="h-24 w-full bg-[#252525] rounded animate-pulse" />
             <div className="space-y-3 ps-6">
-              {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+              {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="h-4 w-4 rounded-full bg-[#252525] animate-pulse" />
                   <div className="h-6 w-full bg-[#252525] rounded animate-pulse" />

@@ -1,3 +1,4 @@
+import { getTransporter } from '@/lib/server-utils';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -99,17 +100,15 @@ async function sendEmail(data: EmailData) {
     const { firstName, lastName, companyName, email, message } = data;
 
     try {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD
-            }
-        });
-
+        
+        // Verify SMTP connection before sending
+        const transporter = await getTransporter();
+        await transporter.verify();
+        console.log('✅ SMTP server is ready to send emails');
+        
         // Admin notification email
         const adminMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM,
             to: process.env.NOTIFY_EMAIL,
             subject: `New Contact Form Submission from ${firstName} ${lastName}`,
             html: `
@@ -124,7 +123,7 @@ async function sendEmail(data: EmailData) {
 
         // Thank you email to user
         const userMailOptions = {
-            from: process.env.GOOGLE_EMAIL,
+            from: process.env.PROFESSIONAL_MAIL_FROM,
             to: email,
             subject: `Thank You for Contacting Slate AI Solutions`,
             html: `
