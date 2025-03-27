@@ -5,22 +5,22 @@ import { motion } from 'framer-motion';
 const Hero = () => {
   return (
 <section className="px-0">
-  <div className="relative h-screen overflow-hidden">
+  <div className="relative h-[350px] md:h-[450px] lg:h-screen overflow-hidden">
     <video
       autoPlay
       muted
       loop
       playsInline
       preload="auto"
-      className="absolute top-1/2 left-1/2 min-w-full min-h-screen w-auto h-auto z-10 -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-500"
+      className="absolute top-20 md:top-0 left-0 lg:w-full lg:h-full object-cover transition-opacity duration-500"
     >
-      <source src="/video/ai-background.mp4" type="video/mp4" />
+      <source src="/video/Slate AI (2).mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     
-    <div className="absolute inset-0 z-20 bg-black/60"></div>
+    {/* <div className="absolute inset-0 z-20 bg-black/60"></div> */}
     
-    <motion.div 
+    {/* <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -52,7 +52,7 @@ const Hero = () => {
           </motion.h1>
         </div>
       </div>
-    </motion.div>
+    </motion.div> */}
   </div>
 </section>
     
