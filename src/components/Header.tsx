@@ -117,6 +117,7 @@ export default function Header() {
             { href: '/services', label: 'Services' },
             { href: '/blogs', label: 'Blogs' },
             { href: '/contact', label: 'Contact Us' },
+            { href: '/chat-with-ai', label: 'Chat with AI' },
           ].map((link, index) => (
             <motion.div
               key={link.href}
