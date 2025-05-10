@@ -37,11 +37,11 @@ export default function ChatWithAI() {
     setMessages(prev => [...prev, userMessage]);
     
     try {
-      const res = await fetch("http://localhost:8000/ask", {
+      const res = await fetch("https://slateai-rag-python.onrender.com/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
-          website_url: "https://www.newslate.co.uk",
+          // website_url: "https://www.newslate.co.uk",
           question: question 
         }),
       });
@@ -133,7 +133,7 @@ export default function ChatWithAI() {
                     </span>
                   </div>
                   {message.type === 'ai' ? (
-                    <div className="prose prose-invert max-w-none text-white">
+                    <div className="prose prose-invert max-w-none text-white [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:my-1">
                       <ReactMarkdown>{message.content}</ReactMarkdown>
                     </div>
                   ) : (
@@ -173,6 +173,7 @@ export default function ChatWithAI() {
                 </div>
               </motion.div>
             )}
+            
           </div>
 
           {/* Input Area */}
