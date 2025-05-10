@@ -38,10 +38,11 @@ export default function ChatWithAI() {
     
     try {
       const res = await fetch("https://slateai-rag-python.onrender.com/ask", {
+      // const res = await fetch("http://localhost:8000/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
-          // website_url: "https://www.newslate.co.uk",
+          website_url: "https://www.newslate.co.uk",
           question: question 
         }),
       });
