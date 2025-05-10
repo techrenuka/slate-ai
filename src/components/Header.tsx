@@ -85,6 +85,7 @@ export default function Header() {
               { href: '/services', label: 'Services' },
               { href: '/blogs', label: 'Blogs' },
               { href: '/contact', label: 'Contact Us' },
+              { href: '/chat-with-ai', label: 'Chat with AI' },
               { href: '/slateai-app', label: 'Slate AI APP' },
             ].map((link, index) => (
               <motion.div
