@@ -13,7 +13,9 @@ export default function ChatWithAI() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -22,6 +24,54 @@ export default function ChatWithAI() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Initialize speech recognition
+  useEffect(() => {
+    if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = 'en-US';
+  
+      recognitionRef.current.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setQuestion(prev => prev + transcript);
+      };
+  
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+  
+      recognitionRef.current.onerror = (event : any) => {
+        console.error('Speech recognition error', event.error);
+        setIsListening(false);
+      };
+    }
+  
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.abort();
+      }
+    };
+  }, []);
+  
+
+  const toggleListening = () => {
+    if (!recognitionRef.current) {
+      setError("Speech recognition is not supported in your browser.");
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      setQuestion("");
+      recognitionRef.current.start();
+      setIsListening(true);
+    }
+  };
 
   const askQuestion = async () => {
     if (!question.trim()) return;
@@ -99,6 +149,7 @@ export default function ChatWithAI() {
                 </div>
                 <h3 className="text-xl font-medium mb-2">Welcome to SLATE AI Chat</h3>
                 <p>Ask a question to get started</p>
+                <p className="mt-2 text-sm">You can type or use the microphone button to speak your question</p>
               </motion.div>
             )}
 
@@ -175,6 +226,7 @@ export default function ChatWithAI() {
               </motion.div>
             )}
             
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
@@ -186,13 +238,47 @@ export default function ChatWithAI() {
                 onChange={(e) => setQuestion(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && askQuestion()}
                 className="flex-1 bg-[#222] text-white border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Type your question here..."
+                placeholder={isListening ? "Listening..." : "Type your question here..."}
+                disabled={isListening}
               />
+              
+              {/* Microphone Button */}
+              <button
+                onClick={toggleListening}
+                disabled={loading}
+                className={`px-4 py-3 rounded-lg font-medium transition-all flex items-center justify-center ${
+                  isListening
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-[#333] hover:bg-[#444]"
+                } text-white`}
+                title={isListening ? "Stop listening" : "Start voice input"}
+              >
+                {isListening ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M6 18L18 6M6 6l12 12" // X icon when listening
+                    />
+                  </svg>
+                ) : (
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 11L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M9 9L9 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M15 9L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M18 11L18 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M12 11L12 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  </svg>
+                )}
+              </button>
+              
+              {/* Send Button */}
               <button
                 onClick={askQuestion}
-                disabled={loading}
+                disabled={loading || (isListening && !question.trim())}
                 className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
-                  loading
+                  loading || (isListening && !question.trim())
                     ? "bg-gray-700 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90"
                 } text-white`}
