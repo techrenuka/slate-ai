@@ -92,6 +92,11 @@ export default function ChatWithAI() {
 
   const speakText = async (text: string) => {
     try {
+      // Stop any currently playing audio first
+      if (isSpeaking) {
+        stopSpeaking();
+      }
+      
       setIsSpeaking(true);
       setError(""); // Clear any previous errors
       
@@ -124,30 +129,44 @@ export default function ChatWithAI() {
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error("ElevenLabs API error:", errorData);
+        console.error("ElevenLabs API error:", JSON.stringify(errorData));
         throw new Error(errorData.detail || `Failed to generate speech: ${response.status} ${response.statusText}`);
       }
       
       const audioBlob = await response.blob();
+      
+      // Clean up previous audio URL if it exists
+      if (audioUrl) {
+        URL.revokeObjectURL(audioUrl);
+      }
+      
       const url = URL.createObjectURL(audioBlob);
       setAudioUrl(url);
       
+      // Create a new Audio element each time to avoid issues with reusing the same element
       if (audioRef.current) {
+        // Wait a small amount of time to ensure previous audio operations are complete
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
         audioRef.current.src = url;
-        audioRef.current.play().catch(err => {
-          console.error("Audio playback error:", err);
-          throw new Error("Failed to play audio");
-        });
+        
+        // Use a proper promise-based approach for playing audio
+        try {
+          await audioRef.current.play();
+        } catch (playError) {
+          console.error("Audio playback error:", playError);
+          throw new Error("Failed to play audio: " + (playError instanceof Error ? playError.message : "Unknown error"));
+        }
       }
     } catch (err) {
-      console.error('Error generating speech:', err);
+      console.error('Error generating speech:', err instanceof Error ? err.message : JSON.stringify(err));
       setIsSpeaking(false);
       
       // Provide more specific error messages
       if (err instanceof Error) {
         setError(`Speech generation failed: ${err.message}`);
       } else {
-        setError("Failed to generate speech. Please try again.");
+        setError(`Failed to generate speech: ${JSON.stringify(err)}`);
       }
       
       // Clean up any resources
@@ -155,44 +174,103 @@ export default function ChatWithAI() {
         URL.revokeObjectURL(audioUrl);
         setAudioUrl(null);
       }
+      
+      // Re-throw to allow fallback to work
+      throw err;
     }
   };
   
   const stopSpeaking = () => {
+    // Set a flag to indicate we're intentionally stopping
+    const wasIntentionallyStopped = true;
+    
     // Stop ElevenLabs audio
     if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      try {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current.src = ''; // Clear the source
+      } catch (e) {
+        console.error("Error stopping audio:", e);
+      }
     }
     
     // Stop browser speech synthesis if active
     if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {
+        console.error("Error canceling speech synthesis:", e);
+      }
+    }
+    
+    // Clean up audio URL if it exists
+    if (audioUrl) {
+      URL.revokeObjectURL(audioUrl);
+      setAudioUrl(null);
     }
     
     setIsSpeaking(false);
+    
+    // Clear any "interrupted" errors that might have been set during intentional stopping
+    if (error && error.includes("interrupted")) {
+      setError("");
+    }
   };
 
-  // Add this function before askQuestion
   const speakTextWithFallback = async (text: string) => {
+    // Clear any previous errors
+    setError("");
+    
+    // Set a flag to prevent multiple speech attempts at once
+    if (isSpeaking) {
+      stopSpeaking();
+      // Small delay to ensure previous speech is fully stopped
+      await new Promise(resolve => setTimeout(resolve, 300));
+    }
+    
     try {
+      // First try ElevenLabs
       await speakText(text);
     } catch (err) {
-      // If ElevenLabs fails, try browser's built-in speech synthesis
-      console.log("Falling back to browser speech synthesis");
+      console.log("Falling back to browser speech synthesis", err instanceof Error ? err.message : JSON.stringify(err));
       
+      // If ElevenLabs fails, try browser's built-in speech synthesis
       if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        utterance.onend = () => setIsSpeaking(false);
-        utterance.onerror = () => {
+        try {
+          // Cancel any ongoing speech synthesis
+          window.speechSynthesis.cancel();
+          
+          // Small delay to ensure previous speech is fully canceled
+          await new Promise(resolve => setTimeout(resolve, 100));
+          
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'en-US';
+          
+          // Set up event handlers before speaking
+          utterance.onend = () => {
+            console.log("Speech synthesis completed successfully");
+            setIsSpeaking(false);
+          };
+          
+          utterance.onerror = (event) => {
+            console.error("Speech synthesis error:", event.error || "unknown error");
+            setIsSpeaking(false);
+            // Only set error if it's not an "interrupted" error during normal operation
+            // if (event.error !== "interrupted" || !document.hidden) {
+            //   setError(`Speech synthesis failed: ${event.error || 'Unknown error'}`);
+            // }
+          };
+          
+          setIsSpeaking(true);
+          window.speechSynthesis.speak(utterance);
+        } catch (synthError) {
+          console.error("Speech synthesis error:", synthError instanceof Error ? synthError.message : JSON.stringify(synthError));
           setIsSpeaking(false);
-          setError("Speech synthesis failed. Please try again.");
-        };
-        
-        setIsSpeaking(true);
-        window.speechSynthesis.speak(utterance);
+          setError(`Speech synthesis failed: ${synthError instanceof Error ? synthError.message : 'Unknown error'}`);
+        }
       } else {
+        setIsSpeaking(false);
         setError("Text-to-speech is not supported in your browser.");
       }
     }
@@ -347,7 +425,7 @@ export default function ChatWithAI() {
             ))}
 
             {/* Error Message */}
-            {error && (
+            {/* {error && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -360,7 +438,7 @@ export default function ChatWithAI() {
                   {error}
                 </div>
               </motion.div>
-            )}
+            )} */}
 
             {/* Loading Indicator */}
             {loading && (
@@ -458,3 +536,21 @@ export default function ChatWithAI() {
     </div>
   );
 }
+
+// // Add this useEffect after your other useEffect hooks
+// useEffect(() => {
+
+  
+//   const handleVisibilityChange = () => {
+//     if (document.hidden && isSpeaking) {
+//       // If the page becomes hidden while speaking, stop speaking to prevent interruption errors
+//       stopSpeaking();
+//     }
+//   };
+  
+//   document.addEventListener('visibilitychange', handleVisibilityChange);
+  
+//   return () => {
+//     document.removeEventListener('visibilitychange', handleVisibilityChange);
+//   };
+// }, [isSpeaking]);
