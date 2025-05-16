@@ -14,8 +14,11 @@ export default function ChatWithAI() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -24,6 +27,21 @@ export default function ChatWithAI() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Initialize audio element
+  useEffect(() => {
+    audioRef.current = new Audio();
+    audioRef.current.onended = () => {
+      setIsSpeaking(false);
+    };
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   // Initialize speech recognition
   useEffect(() => {
@@ -56,7 +74,6 @@ export default function ChatWithAI() {
     };
   }, []);
   
-
   const toggleListening = () => {
     if (!recognitionRef.current) {
       setError("Speech recognition is not supported in your browser.");
@@ -70,6 +87,114 @@ export default function ChatWithAI() {
       setQuestion("");
       recognitionRef.current.start();
       setIsListening(true);
+    }
+  };
+
+  const speakText = async (text: string) => {
+    try {
+      setIsSpeaking(true);
+      setError(""); // Clear any previous errors
+      
+      // Replace with your ElevenLabs API key
+      const apiKey = "sk_038eaf593dbc3df4d29384884be89093dc6ed8cffbfdb217";
+      
+      // Use a default voice ID from ElevenLabs
+      const voiceId = "21m00Tcm4TlvDq8ikWAM"; // Rachel voice
+      
+      // Limit text length to avoid API issues (ElevenLabs has character limits)
+      const trimmedText = text.length > 5000 ? text.substring(0, 5000) + "..." : text;
+      
+      console.log("Sending TTS request to ElevenLabs API...");
+      
+      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'xi-api-key': apiKey
+        },
+        body: JSON.stringify({
+          text: trimmedText,
+          model_id: "eleven_flash_v2_5",
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.5
+          }
+        })
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error("ElevenLabs API error:", errorData);
+        throw new Error(errorData.detail || `Failed to generate speech: ${response.status} ${response.statusText}`);
+      }
+      
+      const audioBlob = await response.blob();
+      const url = URL.createObjectURL(audioBlob);
+      setAudioUrl(url);
+      
+      if (audioRef.current) {
+        audioRef.current.src = url;
+        audioRef.current.play().catch(err => {
+          console.error("Audio playback error:", err);
+          throw new Error("Failed to play audio");
+        });
+      }
+    } catch (err) {
+      console.error('Error generating speech:', err);
+      setIsSpeaking(false);
+      
+      // Provide more specific error messages
+      if (err instanceof Error) {
+        setError(`Speech generation failed: ${err.message}`);
+      } else {
+        setError("Failed to generate speech. Please try again.");
+      }
+      
+      // Clean up any resources
+      if (audioUrl) {
+        URL.revokeObjectURL(audioUrl);
+        setAudioUrl(null);
+      }
+    }
+  };
+  
+  const stopSpeaking = () => {
+    // Stop ElevenLabs audio
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    
+    // Stop browser speech synthesis if active
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    
+    setIsSpeaking(false);
+  };
+
+  // Add this function before askQuestion
+  const speakTextWithFallback = async (text: string) => {
+    try {
+      await speakText(text);
+    } catch (err) {
+      // If ElevenLabs fails, try browser's built-in speech synthesis
+      console.log("Falling back to browser speech synthesis");
+      
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => {
+          setIsSpeaking(false);
+          setError("Speech synthesis failed. Please try again.");
+        };
+        
+        setIsSpeaking(true);
+        window.speechSynthesis.speak(utterance);
+      } else {
+        setError("Text-to-speech is not supported in your browser.");
+      }
     }
   };
 
@@ -109,6 +234,13 @@ export default function ChatWithAI() {
         content: data.answer
       };
       setMessages(prev => [...prev, aiMessage]);
+      
+      // Automatically speak the AI response
+      // In the askQuestion function, replace:
+      // speakText(data.answer);
+      // with:
+      speakTextWithFallback(data.answer);
+      
       setQuestion(""); // Clear input after successful response
     } catch (err) {
       if (err instanceof Error) {
@@ -180,9 +312,28 @@ export default function ChatWithAI() {
                         </svg>
                       </div>
                     )}
-                    <span className="text-gray-200 text-sm">
-                      {message.type === 'user' ? 'You' : 'AI Assistant'}
-                    </span>
+                    {/* Add speak button for AI messages */}
+                    {message.type === 'ai' && (
+                      <button 
+                        onClick={() => isSpeaking ? stopSpeaking() : speakTextWithFallback(message.content)}
+                        className={`ml-auto p-1 rounded-full ${isSpeaking ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'} transition-colors`}
+                        title={isSpeaking ? "Stop speaking" : "Speak this response"}
+                      >
+                        {isSpeaking ? (
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M6 11L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                            <path d="M9 9L9 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                            <path d="M15 9L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                            <path d="M18 11L18 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                            <path d="M12 11L12 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                          </svg>
+                        )}
+                      </button>
+                    )}
                   </div>
                   {message.type === 'ai' ? (
                     <div className="prose prose-invert max-w-none text-white [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:my-1">
